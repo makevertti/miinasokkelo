@@ -16,7 +16,7 @@ public class PelaajaTest {
         pelialue = new Pelialue(10);
         pelaaja = new Pelaaja(pelialue, 2, 5);
         pelaaja2 = new Pelaaja(pelialue, 0, 0);
-        pelaaja3 = new Pelaaja(pelialue, 10, 10);
+        pelaaja3 = new Pelaaja(pelialue, 9, 9);
     }
     
     @Test
@@ -51,8 +51,8 @@ public class PelaajaTest {
     public void liikkuminenYlaoikealleToimiiOltaessaReunassa() {
         pelaaja3.liiku("yläoikea");
         
-        assertEquals(10, pelaaja3.sijaintiX);
-        assertEquals(10, pelaaja3.sijaintiY);
+        assertEquals(9, pelaaja3.sijaintiX);
+        assertEquals(9, pelaaja3.sijaintiY);
     }
     
     @Test
@@ -66,7 +66,7 @@ public class PelaajaTest {
     public void liikkuminenOikealleToimiiOltaessaReunassa() {
         pelaaja3.liiku("oikea");
         
-        assertEquals(10, pelaaja3.sijaintiX);
+        assertEquals(9, pelaaja3.sijaintiX);
     }
     
     @Test
@@ -81,8 +81,8 @@ public class PelaajaTest {
     public void liikkuminenAlaoikealleToimiiOltaessaReunassa() {
         pelaaja3.liiku("alaoikea");
         
-        assertEquals(10, pelaaja3.sijaintiX);
-        assertEquals(10, pelaaja3.sijaintiY);
+        assertEquals(9, pelaaja3.sijaintiX);
+        assertEquals(9, pelaaja3.sijaintiY);
     }
     
     @Test
@@ -96,7 +96,7 @@ public class PelaajaTest {
     public void liikkuminenAlasToimiiOltaessaReunassa() {
         pelaaja3.liiku("alas");
         
-        assertEquals(10, pelaaja3.sijaintiY);
+        assertEquals(9, pelaaja3.sijaintiY);
     }
     
     @Test
@@ -111,8 +111,8 @@ public class PelaajaTest {
     public void liikkuminenAlavasemmalleToimiiOltaessaReunassa() {
         pelaaja3.liiku("alavasen");
         
-        assertEquals(10, pelaaja3.sijaintiY);
-        assertEquals(10, pelaaja3.sijaintiX);
+        assertEquals(9, pelaaja3.sijaintiY);
+        assertEquals(9, pelaaja3.sijaintiX);
     }
     
     @Test

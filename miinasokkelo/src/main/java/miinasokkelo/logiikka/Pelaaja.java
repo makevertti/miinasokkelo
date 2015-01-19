@@ -20,10 +20,6 @@ public class Pelaaja {
         paivitaPelaajanSijainti();
     }
     
-    private void paivitaPelaajanSijainti() {
-        pelialue.paivitaPelaajanSijainti(edellinenX, edellinenY, sijaintiX, sijaintiY);
-    }
-    
     public void liiku(String suunta) {
         switch(suunta) {
             case "ylös":
@@ -79,6 +75,10 @@ public class Pelaaja {
                 break;
         }
         paivitaPelaajanSijainti();
+    }
+    
+    private void paivitaPelaajanSijainti() {
+        pelialue.paivitaPelaajanSijainti(edellinenX, edellinenY, sijaintiX, sijaintiY);
     }
 
     private void paivitaEdellinenSijainti() {
