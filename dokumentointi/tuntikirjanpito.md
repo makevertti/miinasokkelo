@@ -10,3 +10,7 @@
 #### 19.1
 
 30 min - Miinojen lisäyssysteemi
+
+#### 20.1
+
+30 min - Peli pitää kirjaa ruuduista joissa ollaan käyty / jotka on avattu
