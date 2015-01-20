@@ -6,9 +6,11 @@ import java.util.Random;
 public class Pelialue {
     int[][] ruudukko;   // 0 = tyhjä, 1 = pelaaja, 2 = miina
     Random random;
+    boolean[][] avatutRuudut;   // false = ruudussa ei käyty, true = ruudussa käyty
     
     public Pelialue(int alueenKoko) {
         ruudukko = new int[alueenKoko][alueenKoko];
+        avatutRuudut = new boolean[alueenKoko][alueenKoko];
         lisaaMiinat(30);
     }
     
@@ -18,6 +20,11 @@ public class Pelialue {
             pelaajaOsuiMiinaan();
         }
         ruudukko[y][x] = 1;
+        paivitaAvatutRuudut(x, y);
+    }
+    
+    public void paivitaAvatutRuudut(int x, int y) {
+        avatutRuudut[y][x] = true;
     }
     
     public int getKoko() {
@@ -36,6 +43,10 @@ public class Pelialue {
         }
     }
     
+    private void pelaajaOsuiMiinaan() {
+        System.out.println("Miina!");   //Peli loppuu
+    }
+    
     public void tulosta() {
         for (int i = 0; i < ruudukko.length; i++) {
             for (int j = 0; j < ruudukko.length; j++) {
@@ -44,8 +55,13 @@ public class Pelialue {
             System.out.println("");
         }
     }
-
-    private void pelaajaOsuiMiinaan() {
-        System.out.println("Miina!");   //Peli loppuu
+    
+    public void tulostaAvatutRuudut() {
+        for (int i = 0; i < avatutRuudut.length; i++) {
+            for (int j = 0; j < avatutRuudut.length; j++) {
+                System.out.print(avatutRuudut[i][j]);
+            }
+            System.out.println("");            
+        }
     }
 }

@@ -18,6 +18,7 @@ public class Pelaaja {
         edellinenY = y;
         
         paivitaPelaajanSijainti();
+        pelialue.paivitaAvatutRuudut(x, y);
     }
     
     public void liiku(String suunta) {
