@@ -2,7 +2,6 @@
 
 1 h - Repon ja projektin luonti ja konfigurointi
 
-
 #### 16.1
 
 2:15 h - Pelaajan liikkumissysteemin aloitus ja testejä
@@ -14,3 +13,7 @@
 #### 20.1
 
 30 min - Peli pitää kirjaa ruuduista joissa ollaan käyty / jotka on avattu
+
+#### 22.1
+
+1 h - Graafisen käyttöliittymän aloittaminen, luokkakaavion piirto
