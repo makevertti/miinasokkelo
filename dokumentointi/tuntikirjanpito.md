@@ -17,3 +17,7 @@
 #### 22.1
 
 1 h - Graafisen käyttöliittymän aloittaminen, luokkakaavion piirto
+
+#### 23.1
+
+2 h - Graafisen käyttöliittymän edistämistä
