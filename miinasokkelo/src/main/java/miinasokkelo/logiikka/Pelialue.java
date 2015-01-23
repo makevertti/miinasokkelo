@@ -2,16 +2,21 @@
 package miinasokkelo.logiikka;
 
 import java.util.Random;
+import javax.swing.JFrame;
+import miinasokkelo.kayttoliittyma.GraafinenPelialue;
 
 public class Pelialue {
     int[][] ruudukko;   // 0 = tyhjä, 1 = pelaaja, 2 = miina
     Random random;
     boolean[][] avatutRuudut;   // false = ruudussa ei käyty, true = ruudussa käyty
+    GraafinenPelialue graafinenPelialue;
     
     public Pelialue(int alueenKoko) {
         ruudukko = new int[alueenKoko][alueenKoko];
         avatutRuudut = new boolean[alueenKoko][alueenKoko];
-        lisaaMiinat(30);
+        lisaaMiinat(40);
+        graafinenPelialue = new GraafinenPelialue(this, alueenKoko);
+        luoGrafiikat();
     }
     
     public void paivitaPelaajanSijainti(int edellinenX, int edellinenY, int x, int y) {
@@ -21,6 +26,8 @@ public class Pelialue {
         }
         ruudukko[y][x] = 1;
         paivitaAvatutRuudut(x, y);
+        
+        graafinenPelialue.paivitaGraafinenPelialue();
     }
     
     public void paivitaAvatutRuudut(int x, int y) {
@@ -63,5 +70,21 @@ public class Pelialue {
             }
             System.out.println("");            
         }
+    }
+
+    public int getRuutu(int x, int y) {
+        return ruudukko[y][x];
+    }
+    
+    public boolean getOnkoAvattu(int x, int y) {
+        return avatutRuudut[y][x];
+    }
+    
+    private void luoGrafiikat() {
+        JFrame ikkuna = new JFrame("miinasokkelo");
+        ikkuna.add(graafinenPelialue);
+        ikkuna.setSize(800, 800);
+        ikkuna.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ikkuna.setVisible(true);    
     }
 }

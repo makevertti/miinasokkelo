@@ -4,23 +4,42 @@ package miinasokkelo.kayttoliittyma;
 import java.awt.Color;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
+import miinasokkelo.logiikka.Pelialue;
 
 public class GraafinenPelialue extends JPanel {
-    private Ruutu ruudut[][];
+    private GrafiikkaRuutu grafiikkaRuudut[][];
+    private Pelialue pelialue;
     
-    public GraafinenPelialue(int koko) {        
+    public GraafinenPelialue(Pelialue alue, int koko) {
         this.setSize(800, 800);
         this.setBackground(Color.WHITE);
         this.setLayout(new GridLayout(koko, koko, 1, 1));
-        ruudut = new Ruutu[koko][koko];
+        grafiikkaRuudut = new GrafiikkaRuutu[koko][koko];
+        
+        pelialue = alue;
         
         for (int i = 0; i < koko; i++) {
             for (int j = 0; j < koko; j++) {
-                ruudut[j][i] = new Ruutu();
-                ruudut[j][i].setSize(800, 800);
-                this.add(ruudut[j][i]);
+                grafiikkaRuudut[j][i] = new GrafiikkaRuutu();
+                grafiikkaRuudut[j][i].setSize(800, 800);
+                this.add(grafiikkaRuudut[j][i]);
             }
         }
     }
     
+    public void paivitaGraafinenPelialue() {
+        for (int i = 0; i < pelialue.getKoko(); i++) {
+            for (int j = 0; j < pelialue.getKoko(); j++) {
+                if (!pelialue.getOnkoAvattu(j, i)) {  //ruudussa ei ole käyty / "tuntematon"
+                    grafiikkaRuudut[j][i].vaihdaRuudunTyyppi("tuntematon");
+                } else {
+                    if (pelialue.getRuutu(j, i) == 0) {  //tyhjä ruutu
+                        grafiikkaRuudut[j][i].vaihdaRuudunTyyppi("tyhjä");
+                    } else if (pelialue.getRuutu(j, i) == 2) {   //miina
+                        grafiikkaRuudut[j][i].vaihdaRuudunTyyppi("miina");
+                    }
+                }
+            }
+        }
+    }
 }
