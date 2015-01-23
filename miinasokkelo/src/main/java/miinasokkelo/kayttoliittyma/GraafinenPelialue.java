@@ -1,24 +1,26 @@
 
 package miinasokkelo.kayttoliittyma;
 
-import java.awt.Dimension;
-import javax.swing.JFrame;
-import javax.swing.WindowConstants;
+import java.awt.Color;
+import java.awt.GridLayout;
+import javax.swing.JPanel;
 
-public class GraafinenPelialue implements Runnable {
-
-    private JFrame ikkuna;
-    private PaaIkkuna paaIkkuna;
+public class GraafinenPelialue extends JPanel {
+    private Ruutu ruudut[][];
     
-    @Override
-    public void run() {
-        ikkuna = new JFrame("miinasokkelo");
-        ikkuna.setPreferredSize(new Dimension(400, 400));
-        ikkuna.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        paaIkkuna = new PaaIkkuna();
-        ikkuna.getContentPane().add(paaIkkuna);
-        ikkuna.pack();
-        ikkuna.setVisible(true);
+    public GraafinenPelialue(int koko) {        
+        this.setSize(800, 800);
+        this.setBackground(Color.WHITE);
+        this.setLayout(new GridLayout(koko, koko, 1, 1));
+        ruudut = new Ruutu[koko][koko];
+        
+        for (int i = 0; i < koko; i++) {
+            for (int j = 0; j < koko; j++) {
+                ruudut[j][i] = new Ruutu();
+                ruudut[j][i].setSize(800, 800);
+                this.add(ruudut[j][i]);
+            }
+        }
     }
     
 }
