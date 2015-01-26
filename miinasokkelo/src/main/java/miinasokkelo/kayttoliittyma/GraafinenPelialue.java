@@ -9,6 +9,7 @@ import miinasokkelo.logiikka.Pelialue;
 public class GraafinenPelialue extends JPanel {
     private GrafiikkaRuutu grafiikkaRuudut[][];
     private Pelialue pelialue;
+    private Nappaimistokuuntelija nappaimistokuuntelija;
     
     public GraafinenPelialue(Pelialue alue, int koko) {
         this.setSize(800, 800);
@@ -37,9 +38,17 @@ public class GraafinenPelialue extends JPanel {
                         grafiikkaRuudut[j][i].vaihdaRuudunTyyppi("tyhjä");
                     } else if (pelialue.getRuutu(j, i) == 2) {   //miina
                         grafiikkaRuudut[j][i].vaihdaRuudunTyyppi("miina");
+                    } else if (pelialue.getRuutu(j, i) == 1) {
+                        grafiikkaRuudut[j][i].vaihdaRuudunTyyppi("pelaaja");
                     }
                 }
             }
         }
+    }
+
+    public void lisaaNappaimistonkuuntelija() {
+        nappaimistokuuntelija = new Nappaimistokuuntelija(pelialue.getPelaaja());
+        addKeyListener(nappaimistokuuntelija);
+        setFocusable(true);
     }
 }

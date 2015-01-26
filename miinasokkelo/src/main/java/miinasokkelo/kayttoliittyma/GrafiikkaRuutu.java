@@ -22,6 +22,9 @@ public class GrafiikkaRuutu extends JPanel {
             case "miina":
                 this.setBackground(Color.RED);
                 break;
+                
+            case "pelaaja":
+                this.setBackground(Color.GREEN);
         }
     }
 }

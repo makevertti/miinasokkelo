@@ -10,11 +10,12 @@ public class Pelialue {
     Random random;
     boolean[][] avatutRuudut;   // false = ruudussa ei käyty, true = ruudussa käyty
     GraafinenPelialue graafinenPelialue;
+    private Pelaaja pelaaja;
     
     public Pelialue(int alueenKoko) {
         ruudukko = new int[alueenKoko][alueenKoko];
         avatutRuudut = new boolean[alueenKoko][alueenKoko];
-        lisaaMiinat(40);
+        lisaaMiinat(30);
         graafinenPelialue = new GraafinenPelialue(this, alueenKoko);
         luoGrafiikat();
     }
@@ -86,5 +87,17 @@ public class Pelialue {
         ikkuna.setSize(800, 800);
         ikkuna.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ikkuna.setVisible(true);    
+    }
+
+    public void lisaaPelaaja(Pelaaja p) {
+        pelaaja = p;
+    }
+
+    public Pelaaja getPelaaja() {
+        return this.pelaaja;
+    }
+
+    public void lisaaNappaimistonkuuntelija() {
+        graafinenPelialue.lisaaNappaimistonkuuntelija();
     }
 }
