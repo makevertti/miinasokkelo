@@ -21,3 +21,7 @@
 #### 23.1
 
 2 h - Graafisen käyttöliittymän edistämistä
+
+#### 26.1
+
+1:10 h - Pelaajaa pystyy liikuttamaan näppäimistöllä (numpad), käyttöliittymän edistystä
