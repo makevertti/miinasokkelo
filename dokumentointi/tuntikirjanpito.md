@@ -25,3 +25,7 @@
 #### 26.1
 
 1:10 h - Pelaajaa pystyy liikuttamaan näppäimistöllä (numpad), käyttöliittymän edistystä
+
+#### 28.1
+
+2:20 h - Käydyt ruudut näyttävät ympärillä olevien miinojen määrät. Peli loppuu kun pelaaja törmää miinaan (ei voi enää ohjata ja kaikkien miinojen sijainnit näytetään. Testien päivitystä
