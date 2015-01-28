@@ -12,7 +12,7 @@ public class PelialueTest {
     
     @Before
     public void setUp() {
-        pelialue = new Pelialue(5);
+        pelialue = new Pelialue(5, 0);
         pelaaja = new Pelaaja(pelialue, 0, 0);
     }
     
@@ -26,8 +26,8 @@ public class PelialueTest {
         pelaaja.liiku("oikea");
         pelaaja.liiku("alaoikea");
         
-        assertEquals(true, pelialue.avatutRuudut[0][0]);
-        assertEquals(true, pelialue.avatutRuudut[0][1]);
-        assertEquals(true, pelialue.avatutRuudut[1][2]);
+        assertEquals(true, pelialue.getOnkoAvattu(0, 0));
+        assertEquals(true, pelialue.getOnkoAvattu(1, 0));
+        assertEquals(true, pelialue.getOnkoAvattu(2, 1));
     }
 }

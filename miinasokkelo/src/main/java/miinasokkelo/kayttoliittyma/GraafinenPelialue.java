@@ -34,12 +34,15 @@ public class GraafinenPelialue extends JPanel {
                 if (!pelialue.getOnkoAvattu(j, i)) {  //ruudussa ei ole käyty / "tuntematon"
                     grafiikkaRuudut[j][i].vaihdaRuudunTyyppi("tuntematon");
                 } else {
-                    if (pelialue.getRuutu(j, i) == 0) {  //tyhjä ruutu
+                    if (pelialue.getRuutu(j, i) == 0) {                     //tyhjä ruutu
                         grafiikkaRuudut[j][i].vaihdaRuudunTyyppi("tyhjä");
-                    } else if (pelialue.getRuutu(j, i) == 2) {   //miina
+                    } else if (pelialue.getRuutu(j, i) == 2) {              //miina
                         grafiikkaRuudut[j][i].vaihdaRuudunTyyppi("miina");
-                    } else if (pelialue.getRuutu(j, i) == 1) {
+                    } else if (pelialue.getRuutu(j, i) == 1) {              //pelaaja
                         grafiikkaRuudut[j][i].vaihdaRuudunTyyppi("pelaaja");
+                        grafiikkaRuudut[j][i].lisaaMiinaNumero(pelialue.getMiinatRuudunYmparilla(i, j));
+                    } else if (pelialue.getRuutu(j, i) == 4) {              //maali
+                        grafiikkaRuudut[j][i].vaihdaRuudunTyyppi("maali");
                     }
                 }
             }
@@ -50,5 +53,17 @@ public class GraafinenPelialue extends JPanel {
         nappaimistokuuntelija = new Nappaimistokuuntelija(pelialue.getPelaaja());
         addKeyListener(nappaimistokuuntelija);
         setFocusable(true);
+    }
+
+    public void naytaKaikkiMiinat() {
+        for (int i = 0; i < pelialue.getKoko(); i++) {
+            for (int j = 0; j < pelialue.getKoko(); j++) {
+                if (pelialue.getRuutu(j, i) == 2) {
+                    grafiikkaRuudut[j][i].vaihdaRuudunTyyppi("miina");
+                } else if (pelialue.getRuutu(j, i) == 3) {
+                    grafiikkaRuudut[j][i].vaihdaRuudunTyyppi("törmätty miina");
+                }
+            }
+        }
     }
 }

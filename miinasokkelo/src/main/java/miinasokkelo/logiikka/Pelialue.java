@@ -6,16 +6,22 @@ import javax.swing.JFrame;
 import miinasokkelo.kayttoliittyma.GraafinenPelialue;
 
 public class Pelialue {
-    int[][] ruudukko;   // 0 = tyhjä, 1 = pelaaja, 2 = miina
-    Random random;
-    boolean[][] avatutRuudut;   // false = ruudussa ei käyty, true = ruudussa käyty
-    GraafinenPelialue graafinenPelialue;
+    private int[][] ruudukko;   // 0 = tyhjä, 1 = pelaaja, 2 = miina, 3 = miina, johon pelaaja osui, 4 = maali
+    private Random random;
+    private boolean[][] avatutRuudut;   // false = ruudussa ei käyty, true = ruudussa käyty
+    private GraafinenPelialue graafinenPelialue;
     private Pelaaja pelaaja;
+    private int[][] miinojaVieressa;
     
-    public Pelialue(int alueenKoko) {
+    public Pelialue(int alueenKoko, int miinat) {
         ruudukko = new int[alueenKoko][alueenKoko];
+        ruudukko[alueenKoko - 1][alueenKoko - 1] = 4;
         avatutRuudut = new boolean[alueenKoko][alueenKoko];
-        lisaaMiinat(30);
+        avatutRuudut[alueenKoko - 1][alueenKoko - 1] = true;
+        lisaaMiinat(miinat);
+        miinojaVieressa = new int[alueenKoko][alueenKoko];
+        luoMiinojaVieressaTaulukko();
+        
         graafinenPelialue = new GraafinenPelialue(this, alueenKoko);
         luoGrafiikat();
     }
@@ -23,12 +29,14 @@ public class Pelialue {
     public void paivitaPelaajanSijainti(int edellinenX, int edellinenY, int x, int y) {
         ruudukko[edellinenY][edellinenX] = 0;
         if (ruudukko[y][x] == 2) {
+            ruudukko[y][x] = 3;
             pelaajaOsuiMiinaan();
+        } else {
+            ruudukko[y][x] = 1;
+            paivitaAvatutRuudut(x, y);
+            graafinenPelialue.paivitaGraafinenPelialue();
         }
-        ruudukko[y][x] = 1;
-        paivitaAvatutRuudut(x, y);
-        
-        graafinenPelialue.paivitaGraafinenPelialue();
+        System.out.println(miinojaVieressa[y][x]);
     }
     
     public void paivitaAvatutRuudut(int x, int y) {
@@ -51,8 +59,10 @@ public class Pelialue {
         }
     }
     
-    private void pelaajaOsuiMiinaan() {
-        System.out.println("Miina!");   //Peli loppuu
+    private void pelaajaOsuiMiinaan() { //Peli loppuu
+        System.out.println("Miina!");
+        pelaaja.poistaOhjaus();
+        graafinenPelialue.naytaKaikkiMiinat();
     }
     
     public void tulosta() {
@@ -99,5 +109,32 @@ public class Pelialue {
 
     public void lisaaNappaimistonkuuntelija() {
         graafinenPelialue.lisaaNappaimistonkuuntelija();
+    }
+
+    private void luoMiinojaVieressaTaulukko() {
+        for (int y = 0; y < ruudukko.length; y++) {
+            for (int x = 0; x < ruudukko.length; x++) {
+                int maara = 0;
+                
+                for (int y2 = -1; y2 <= 1; y2++) {
+                    if ((y + y2 < 0) || (y + y2 >= ruudukko.length)) {
+                        continue;
+                    }
+                    for (int x2 = -1; x2 <= 1; x2++) {
+                        if ((x + x2 < 0) || (x + x2 >= ruudukko.length)) {
+                            continue;
+                        }
+                        if (ruudukko[y + y2][x + x2] == 2) {
+                            maara++;
+                        }
+                    }
+                }
+                miinojaVieressa[y][x] = maara;
+            }
+        }
+    }
+    
+    public int getMiinatRuudunYmparilla(int y, int x) {
+        return miinojaVieressa[y][x];
     }
 }
