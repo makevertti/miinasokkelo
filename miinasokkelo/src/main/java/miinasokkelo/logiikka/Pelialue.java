@@ -65,23 +65,23 @@ public class Pelialue {
         graafinenPelialue.naytaKaikkiMiinat();
     }
     
-    public void tulosta() {
-        for (int i = 0; i < ruudukko.length; i++) {
-            for (int j = 0; j < ruudukko.length; j++) {
-                System.out.print(ruudukko[i][j]);                
-            }
-            System.out.println("");
-        }
-    }
+//    public void tulosta() {
+//        for (int i = 0; i < ruudukko.length; i++) {
+//            for (int j = 0; j < ruudukko.length; j++) {
+//                System.out.print(ruudukko[i][j]);                
+//            }
+//            System.out.println("");
+//        }
+//    }
     
-    public void tulostaAvatutRuudut() {
-        for (int i = 0; i < avatutRuudut.length; i++) {
-            for (int j = 0; j < avatutRuudut.length; j++) {
-                System.out.print(avatutRuudut[i][j]);
-            }
-            System.out.println("");            
-        }
-    }
+//    public void tulostaAvatutRuudut() {
+//        for (int i = 0; i < avatutRuudut.length; i++) {
+//            for (int j = 0; j < avatutRuudut.length; j++) {
+//                System.out.print(avatutRuudut[i][j]);
+//            }
+//            System.out.println("");            
+//        }
+//    }
 
     public int getRuutu(int x, int y) {
         return ruudukko[y][x];

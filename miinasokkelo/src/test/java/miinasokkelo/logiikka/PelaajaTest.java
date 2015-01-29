@@ -7,16 +7,24 @@ import org.junit.Before;
 
 public class PelaajaTest {
     Pelialue pelialue;
+    Pelialue pelialue2;
     Pelaaja pelaaja;
     Pelaaja pelaaja2;
     Pelaaja pelaaja3;
+    Pelaaja pelaaja4;
     
     @Before
     public void setUp() {
         pelialue = new Pelialue(10, 0);
+        pelialue2 = new Pelialue(10, 100);
         pelaaja = new Pelaaja(pelialue, 2, 5);
         pelaaja2 = new Pelaaja(pelialue, 0, 0);
         pelaaja3 = new Pelaaja(pelialue, 9, 9);
+        pelaaja4 = new Pelaaja(pelialue2, 0, 0);
+        pelialue.lisaaPelaaja(pelaaja);
+        pelialue.lisaaPelaaja(pelaaja2);
+        pelialue.lisaaPelaaja(pelaaja3);
+        pelialue2.lisaaPelaaja(pelaaja4);
     }
     
     @Test
@@ -143,5 +151,14 @@ public class PelaajaTest {
         
         assertEquals(0, pelaaja2.getX());
         assertEquals(0, pelaaja2.getY());
+    }
+    
+    @Test
+    public void miinaanTormaamisenJalkeenEiVoiLiikkua() {
+        pelaaja4.liiku("oikea");
+        pelaaja4.liiku("oikea");
+        pelaaja4.liiku("alas");
+        
+        assertEquals(1, pelaaja4.getX());
     }
 }

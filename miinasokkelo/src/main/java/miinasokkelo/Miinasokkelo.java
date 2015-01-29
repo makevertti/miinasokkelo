@@ -5,7 +5,7 @@ import miinasokkelo.logiikka.*;
 
 public class Miinasokkelo {
     private static int pelialueenKoko = 20;
-    private static int miinat = 10; //ei määrä, vaan todennäköisyys/ruutu
+    private static int miinat = 10;
     
     public static void main(String[] args) {
         Pelialue pelialue = new Pelialue(pelialueenKoko, miinat);
