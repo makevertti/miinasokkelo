@@ -29,3 +29,7 @@
 #### 28.1
 
 2:20 h - Käydyt ruudut näyttävät ympärillä olevien miinojen määrät. Peli loppuu kun pelaaja törmää miinaan (ei voi enää ohjata ja kaikkien miinojen sijainnit näytetään. Testien päivitystä
+
+#### 29.1
+
+50 min - Cobertura asetusten säätäminen (raportteja ei voinut tehdä -> korjattu). Lisää testejä. Uusi luokkakaavio
