@@ -15,8 +15,8 @@ public class PelaajaTest {
     
     @Before
     public void setUp() {
-        pelialue = new Pelialue(10, 0);
-        pelialue2 = new Pelialue(10, 100);
+        pelialue = new Pelialue(10, 0, false);
+        pelialue2 = new Pelialue(10, 100, false);
         pelaaja = new Pelaaja(pelialue, 2, 5);
         pelaaja2 = new Pelaaja(pelialue, 0, 0);
         pelaaja3 = new Pelaaja(pelialue, 9, 9);

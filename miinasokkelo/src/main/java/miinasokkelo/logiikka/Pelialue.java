@@ -13,11 +13,11 @@ public class Pelialue {
     private Pelaaja pelaaja;
     private int[][] miinojaVieressa;
 
-    public Pelialue(int alueenKoko, int miinat) {
+    public Pelialue(int alueenKoko, int miinat, boolean eiMahdottomia) {
         ruudukko = new int[alueenKoko][alueenKoko];
         avatutRuudut = new boolean[alueenKoko][alueenKoko];
         avatutRuudut[alueenKoko - 1][alueenKoko - 1] = true;
-        lisaaMiinat(miinat, alueenKoko);
+        lisaaMiinat(miinat, alueenKoko, eiMahdottomia);
         miinojaVieressa = new int[alueenKoko][alueenKoko];
         ruudukko[alueenKoko - 1][alueenKoko - 1] = 4;
         luoMiinojaVieressaTaulukko();
@@ -49,7 +49,7 @@ public class Pelialue {
         return ruudukko.length;
     }
 
-    private void lisaaMiinat(int maara, int alueenKoko) { // TODO: mahdottomien ruudukoiden karsiminen
+    private void lisaaMiinat(int maara, int alueenKoko, boolean eiMahdottomia) {
         random = new Random();
         int miinaRuudut[][] = new int[alueenKoko][alueenKoko];
 
@@ -61,13 +61,14 @@ public class Pelialue {
             }
         }
 
-        if (mahdollisetReitit(miinaRuudut, 0, 0, new boolean[alueenKoko][alueenKoko]) == 0) {
-            lisaaMiinat(maara, alueenKoko);
-        } else {
-            for (int i = 0; i < miinaRuudut.length; i++) {
-                for (int j = 0; j < miinaRuudut.length; j++) {
-                    ruudukko[j][i] = miinaRuudut[j][i];
-                }
+        if (eiMahdottomia) {
+            if (mahdollisetReitit(miinaRuudut, 0, 0, new boolean[alueenKoko][alueenKoko]) == 0) {
+                lisaaMiinat(maara, alueenKoko, eiMahdottomia);
+            }
+        }
+        for (int i = 0; i < miinaRuudut.length; i++) {
+            for (int j = 0; j < miinaRuudut.length; j++) {
+                ruudukko[j][i] = miinaRuudut[j][i];
             }
         }
     }
@@ -76,15 +77,15 @@ public class Pelialue {
         if (x < 0 || y < 0 || x > miinaRuudut.length - 1 || y > miinaRuudut.length - 1 || kayty[y][x] || miinaRuudut[y][x] == 2) {
             return 0;
         }
-        
+
         kayty[y][x] = true;
-        
+
         if (y == miinaRuudut.length - 1 && x == miinaRuudut.length - 1) {
             return 1;
         }
-   
+
         int reitit = 0;
-        
+
         reitit += mahdollisetReitit(miinaRuudut, x + 1, y, kayty);
         reitit += mahdollisetReitit(miinaRuudut, x - 1, y, kayty);
         reitit += mahdollisetReitit(miinaRuudut, x, y + 1, kayty);
@@ -93,11 +94,10 @@ public class Pelialue {
         reitit += mahdollisetReitit(miinaRuudut, x + 1, y + 1, kayty);
         reitit += mahdollisetReitit(miinaRuudut, x - 1, y + 1, kayty);
         reitit += mahdollisetReitit(miinaRuudut, x - 1, y - 1, kayty);
-        
+
         return reitit;
     }
 
-    
     private void pelaajaOsuiMiinaan() { //Peli loppuu
         System.out.println("Miina!");
         pelaaja.poistaOhjaus();
