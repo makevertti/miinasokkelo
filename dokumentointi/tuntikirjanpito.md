@@ -33,3 +33,7 @@
 #### 29.1
 
 50 min - Cobertura asetusten säätäminen (raportteja ei voinut tehdä -> korjattu). Lisää testejä. Uusi luokkakaavio
+
+#### 31.1
+
+2 h - Kun pelaaja pääsee maaliin, peli loppuu. Miinojensijoitukseen lisätty tarkistus, joten jokainen peli on voitettavissa. 
