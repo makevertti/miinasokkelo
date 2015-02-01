@@ -37,3 +37,7 @@
 #### 31.1
 
 2 h - Kun pelaaja pääsee maaliin, peli loppuu. Miinojensijoitukseen lisätty tarkistus, joten jokainen peli on voitettavissa. 
+
+#### 1.2
+
+1:20 h - Ruutujen avaussysteemin edistämistä. Tarkoituksena että pelaajan liikkuessa kaikki ruudut (joihin pääsee pelaajan sijainnista) joiden ympärillä ei ole miinoja aukeavat. (kesken, ei toimi vielä). Pelaajan ja pelialueen kontruktoreiden muokkausta. Edellisestä johtuen testien muokkausta.
