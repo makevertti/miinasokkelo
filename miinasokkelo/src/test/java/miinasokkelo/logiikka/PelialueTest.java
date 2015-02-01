@@ -12,8 +12,8 @@ public class PelialueTest {
     
     @Before
     public void setUp() {
-        pelialue = new Pelialue(5, 0, false);
-        pelaaja = new Pelaaja(pelialue, 0, 0);
+        pelaaja = new Pelaaja(0, 0);
+        pelialue = new Pelialue(5, 0, pelaaja, false);
     }
     
     @Test

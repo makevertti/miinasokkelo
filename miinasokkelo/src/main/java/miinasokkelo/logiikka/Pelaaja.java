@@ -12,8 +12,7 @@ public class Pelaaja {
 
     private boolean osunutMiinaan;
 
-    public Pelaaja(Pelialue p, int x, int y) {
-        pelialue = p;
+    public Pelaaja(int x, int y) {
         sijaintiX = x;
         sijaintiY = y;
 
@@ -21,9 +20,6 @@ public class Pelaaja {
         edellinenY = y;
 
         osunutMiinaan = false;
-        
-        paivitaPelaajanSijainti();
-        pelialue.paivitaAvatutRuudut(x, y);
     }
 
     public void liiku(String suunta) {
@@ -121,5 +117,9 @@ public class Pelaaja {
     
     public int getY() {
         return this.sijaintiY;
+    }
+
+    public void asetaPelialue(Pelialue pelialue) {
+        this.pelialue = pelialue;
     }
 }

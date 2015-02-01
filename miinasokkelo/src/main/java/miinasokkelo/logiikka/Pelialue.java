@@ -13,7 +13,9 @@ public class Pelialue {
     private Pelaaja pelaaja;
     private int[][] miinojaVieressa;
 
-    public Pelialue(int alueenKoko, int miinat, boolean eiMahdottomia) {
+    public Pelialue(int alueenKoko, int miinat, Pelaaja pelaaja, boolean eiMahdottomia) {
+        this.pelaaja = pelaaja;
+        pelaaja.asetaPelialue(this);
         ruudukko = new int[alueenKoko][alueenKoko];
         avatutRuudut = new boolean[alueenKoko][alueenKoko];
         avatutRuudut[alueenKoko - 1][alueenKoko - 1] = true;
@@ -23,7 +25,10 @@ public class Pelialue {
         luoMiinojaVieressaTaulukko();
 
         graafinenPelialue = new GraafinenPelialue(this, alueenKoko);
+        paivitaPelaajanSijainti(0, 0, 0, 0);
+        paivitaAvatutRuudut(0, 0);
         luoGrafiikat();
+        
     }
 
     public void paivitaPelaajanSijainti(int edellinenX, int edellinenY, int x, int y) {
@@ -43,6 +48,7 @@ public class Pelialue {
 
     public void paivitaAvatutRuudut(int x, int y) {
         avatutRuudut[y][x] = true;
+        avaaRuudutJoidenVieressaEiOleMiinoja(pelaaja.getX(), pelaaja.getY());
     }
 
     public int getKoko() {
@@ -120,6 +126,7 @@ public class Pelialue {
 //            System.out.println("");            
 //        }
 //    }
+    
     public int getRuutu(int x, int y) {
         return ruudukko[y][x];
     }
@@ -134,10 +141,6 @@ public class Pelialue {
         ikkuna.setSize(800, 800);
         ikkuna.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ikkuna.setVisible(true);
-    }
-
-    public void lisaaPelaaja(Pelaaja p) {
-        pelaaja = p;
     }
 
     public Pelaaja getPelaaja() {
@@ -179,5 +182,16 @@ public class Pelialue {
         System.out.println("Taso suoritettu!");
         pelaaja.poistaOhjaus();
         graafinenPelialue.naytaKaikkiMiinat();
+    }
+    
+    private void avaaRuudutJoidenVieressaEiOleMiinoja(int x, int y) {   //Ei toimi vielä3
+        if (x < 0 || y < 0 || x > getKoko() - 1 || y > getKoko() - 1 || avatutRuudut[y][x] == true || miinojaVieressa[y][x] != 0) {
+            return;
+        }
+        avatutRuudut[y][x] = true;
+        avaaRuudutJoidenVieressaEiOleMiinoja(x + 1, y);
+        avaaRuudutJoidenVieressaEiOleMiinoja(x - 1, y);
+        avaaRuudutJoidenVieressaEiOleMiinoja(x, y + 1);
+        avaaRuudutJoidenVieressaEiOleMiinoja(x, y - 1);
     }
 }
