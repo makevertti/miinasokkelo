@@ -41,3 +41,7 @@
 #### 1.2
 
 1:20 h - Ruutujen avaussysteemin edistämistä. Tarkoituksena että pelaajan liikkuessa kaikki ruudut (joihin pääsee pelaajan sijainnista) joiden ympärillä ei ole miinoja aukeavat. (kesken, ei toimi vielä). Pelaajan ja pelialueen kontruktoreiden muokkausta. Edellisestä johtuen testien muokkausta.
+
+#### 2.2
+
+1:15 h - Luokkien javadoccien kirjoittaminen. Ruutujen avaussysteemin edistämistä.

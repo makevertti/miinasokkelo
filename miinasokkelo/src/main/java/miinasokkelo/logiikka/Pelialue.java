@@ -31,7 +31,7 @@ public class Pelialue {
         paivitaPelaajanSijainti(0, 0, 0, 0);
         paivitaAvatutRuudut(0, 0);
         luoGrafiikat();
-        
+
     }
 
     public void paivitaPelaajanSijainti(int edellinenX, int edellinenY, int x, int y) {
@@ -50,8 +50,8 @@ public class Pelialue {
     }
 
     public void paivitaAvatutRuudut(int x, int y) {
+        avaaRuudutJoidenVieressaEiOleMiinoja(pelaaja.getX(), pelaaja.getY(), new boolean[getKoko()][getKoko()]);
         avatutRuudut[y][x] = true;
-        avaaRuudutJoidenVieressaEiOleMiinoja(pelaaja.getX(), pelaaja.getY());
     }
 
     public int getKoko() {
@@ -129,7 +129,6 @@ public class Pelialue {
 //            System.out.println("");            
 //        }
 //    }
-    
     public int getRuutu(int x, int y) {
         return ruudukko[y][x];
     }
@@ -186,15 +185,53 @@ public class Pelialue {
         pelaaja.poistaOhjaus();
         graafinenPelialue.naytaKaikkiMiinat();
     }
-    
-    private void avaaRuudutJoidenVieressaEiOleMiinoja(int x, int y) {   //Ei toimi vielä
-        if (x < 0 || y < 0 || x > getKoko() - 1 || y > getKoko() - 1 || avatutRuudut[y][x] == true || miinojaVieressa[y][x] != 0) {
+
+    private void avaaRuudutJoidenVieressaEiOleMiinoja(int x, int y, boolean kayty[][]) {    //Ei kovin kaunis ... tarvii keksiä jotain...
+        if (x < 0 || y < 0 || x > getKoko() - 1 || y > getKoko() - 1 || kayty[y][x] == true || miinojaVieressa[y][x] != 0) {
             return;
         }
+        kayty[y][x] = true;
         avatutRuudut[y][x] = true;
-        avaaRuudutJoidenVieressaEiOleMiinoja(x + 1, y);
-        avaaRuudutJoidenVieressaEiOleMiinoja(x - 1, y);
-        avaaRuudutJoidenVieressaEiOleMiinoja(x, y + 1);
-        avaaRuudutJoidenVieressaEiOleMiinoja(x, y - 1);
+        
+        
+        if (onkoAlueella(x, y + 1)) {
+            avatutRuudut[y + 1][x] = true;
+        }
+        if (onkoAlueella(x + 1, y)) {
+            avatutRuudut[y][x + 1] = true;
+        }
+        if (onkoAlueella(x, y - 1)) {
+            avatutRuudut[y - 1][x] = true;
+        }
+        if (onkoAlueella(x + 1, y)) {
+            avatutRuudut[y][x + 1] = true;
+        }
+        if (onkoAlueella(x + 1, y + 1)) {
+            avatutRuudut[y + 1][x + 1] = true;
+        }
+        if (onkoAlueella(x - 1, y - 1)) {
+            avatutRuudut[y - 1][x - 1] = true;
+        }
+        if (onkoAlueella(x - 1, y + 1)) {
+            avatutRuudut[y + 1][x - 1] = true;
+        }
+        if (onkoAlueella(x + 1, y - 1)) {
+            avatutRuudut[y - 1][x + 1] = true;
+        }
+        avaaRuudutJoidenVieressaEiOleMiinoja(x + 1, y, kayty);
+        avaaRuudutJoidenVieressaEiOleMiinoja(x - 1, y, kayty);
+        avaaRuudutJoidenVieressaEiOleMiinoja(x, y + 1, kayty);
+        avaaRuudutJoidenVieressaEiOleMiinoja(x, y - 1, kayty);
+        avaaRuudutJoidenVieressaEiOleMiinoja(x + 1, y + 1, kayty);
+        avaaRuudutJoidenVieressaEiOleMiinoja(x - 1, y - 1, kayty);
+        avaaRuudutJoidenVieressaEiOleMiinoja(x + 1, y - 1, kayty);
+        avaaRuudutJoidenVieressaEiOleMiinoja(x - 1, y + 1, kayty);
+    }
+    
+    private boolean onkoAlueella(int x, int y) {
+        if (x < 0 || y < 0 || x > getKoko() - 1 || y > getKoko() - 1) {
+            return false;
+        }
+        return true;
     }
 }

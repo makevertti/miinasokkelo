@@ -38,7 +38,7 @@ public class GrafiikkaRuutu extends JPanel {
     }
 
     public void lisaaMiinaNumero(int miinatRuudunYmparilla) {
-        if (this.getComponentCount() < 1) {
+        if (this.getComponentCount() < 1 && miinatRuudunYmparilla > 0) {
             this.add(new JLabel(miinatRuudunYmparilla + ""));
             this.revalidate();
             this.repaint();
