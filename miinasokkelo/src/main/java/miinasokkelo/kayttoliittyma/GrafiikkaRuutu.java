@@ -4,6 +4,9 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * Graafisen pelialueen jokainen ruutu on tämän luokan ilmentymä
+ */
 public class GrafiikkaRuutu extends JPanel {
 
     public void vaihdaRuudunTyyppi(String tyyppi) {

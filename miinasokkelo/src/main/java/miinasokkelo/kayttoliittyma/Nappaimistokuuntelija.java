@@ -5,6 +5,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import miinasokkelo.logiikka.Pelaaja;
 
+/**
+ * Antaa Pelaaja -luokalle liikkumiskomentoja
+ * näppäimistösyötteen perusteella
+ */
 public class Nappaimistokuuntelija implements KeyListener {
     private Pelaaja pelaaja;
     

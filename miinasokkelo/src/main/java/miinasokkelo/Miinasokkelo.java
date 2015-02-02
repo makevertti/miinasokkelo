@@ -3,6 +3,9 @@ package miinasokkelo;
 
 import miinasokkelo.logiikka.*;
 
+/**
+ * Main metodin sisältävä luokka, joka käynnistää pelin 
+ */
 public class Miinasokkelo {
     private static int pelialueenKoko = 20;
     private static int miinat = 10;

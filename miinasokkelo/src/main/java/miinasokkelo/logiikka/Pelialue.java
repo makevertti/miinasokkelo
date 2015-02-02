@@ -4,11 +4,14 @@ import java.util.Random;
 import javax.swing.JFrame;
 import miinasokkelo.kayttoliittyma.GraafinenPelialue;
 
+/**
+ * Kuvaa pelialueen tilannetta taulukoiden avulla
+ */
 public class Pelialue {
 
-    private int[][] ruudukko;   // 0 = tyhjÃ¤, 1 = pelaaja, 2 = miina, 3 = miina, johon pelaaja osui, 4 = maali
+    private int[][] ruudukko;   // 0 = tyhjä, 1 = pelaaja, 2 = miina, 3 = miina, johon pelaaja osui, 4 = maali
     private Random random;
-    private boolean[][] avatutRuudut;   // false = ruudussa ei kÃ¤yty, true = ruudussa kÃ¤yty
+    private boolean[][] avatutRuudut;   // false = ruudussa ei käyty, true = ruudussa käyty
     private GraafinenPelialue graafinenPelialue;
     private Pelaaja pelaaja;
     private int[][] miinojaVieressa;
@@ -184,7 +187,7 @@ public class Pelialue {
         graafinenPelialue.naytaKaikkiMiinat();
     }
     
-    private void avaaRuudutJoidenVieressaEiOleMiinoja(int x, int y) {   //Ei toimi vielä3
+    private void avaaRuudutJoidenVieressaEiOleMiinoja(int x, int y) {   //Ei toimi vielä
         if (x < 0 || y < 0 || x > getKoko() - 1 || y > getKoko() - 1 || avatutRuudut[y][x] == true || miinojaVieressa[y][x] != 0) {
             return;
         }

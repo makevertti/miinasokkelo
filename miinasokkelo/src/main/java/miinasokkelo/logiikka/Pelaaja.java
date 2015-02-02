@@ -1,6 +1,10 @@
 
 package miinasokkelo.logiikka;
 
+/**
+ * Kuvaa pelaajan sijaintia pelialueella.
+ * Sisältää metodeja pelaajan liikkumiseen liittyen 
+ */
 public class Pelaaja {
 
     private Pelialue pelialue;

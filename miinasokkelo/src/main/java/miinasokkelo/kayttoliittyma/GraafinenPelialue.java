@@ -6,6 +6,10 @@ import java.awt.GridLayout;
 import javax.swing.JPanel;
 import miinasokkelo.logiikka.Pelialue;
 
+/**
+ * Luo Pelialue -luokan tietojen perusteella graafisen
+ * esityksen pelialueesta
+ */
 public class GraafinenPelialue extends JPanel {
     private GrafiikkaRuutu grafiikkaRuudut[][];
     private Pelialue pelialue;
