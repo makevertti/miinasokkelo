@@ -45,3 +45,7 @@
 #### 2.2
 
 1:15 h - Luokkien javadoccien kirjoittaminen. Ruutujen avaussysteemin edistämistä.
+
+#### 3.2
+
+1:10 h - Metodien javadocceja. Pientä refaktorointia. Miinanumero ilmestyy myös ruutuun, missä pelaaja on.
