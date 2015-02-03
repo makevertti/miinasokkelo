@@ -12,6 +12,11 @@ import miinasokkelo.logiikka.Pelaaja;
 public class Nappaimistokuuntelija implements KeyListener {
     private Pelaaja pelaaja;
     
+    /**
+     * Kytkee näppäimistökuuntelijan pelaajaan
+     * 
+     * @param p     pelaaja jota halutaan ohjata
+     */
     public Nappaimistokuuntelija(Pelaaja p) {
         pelaaja = p;
     }

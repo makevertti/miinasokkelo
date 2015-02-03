@@ -12,6 +12,6 @@ public class Miinasokkelo {
     
     public static void main(String[] args) {
         Pelialue pelialue = new Pelialue(pelialueenKoko, miinat, new Pelaaja(0, 0), true);
-        pelialue.lisaaNappaimistonkuuntelija();
+        pelialue.setNappaimistonkuuntelija();
     }
 }

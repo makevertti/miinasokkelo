@@ -8,7 +8,14 @@ import javax.swing.JPanel;
  * Graafisen pelialueen jokainen ruutu on tämän luokan ilmentymä
  */
 public class GrafiikkaRuutu extends JPanel {
-
+    
+    /**
+     * Vaihtaa ruudun tyypin
+     * 
+     * @param tyyppi Ruudun tyyppi. Vaihtoehdot: 
+     *               "tuntematon", "tyhjä", "miina", 
+     *               "pelaaja", "törmätty miina", "maali"
+     */
     public void vaihdaRuudunTyyppi(String tyyppi) {
         switch (tyyppi) {
             case "tuntematon":
@@ -37,6 +44,12 @@ public class GrafiikkaRuutu extends JPanel {
         }
     }
 
+    /**
+     * Lisää ruutuun numeron, mikä kertoo kuinka
+     * monta miinaa ruudun ympärillä on
+     * 
+     * @param miinatRuudunYmparilla     Lisättävä numero
+     */
     public void lisaaMiinaNumero(int miinatRuudunYmparilla) {
         if (this.getComponentCount() < 1 && miinatRuudunYmparilla > 0) {
             this.add(new JLabel(miinatRuudunYmparilla + ""));

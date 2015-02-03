@@ -16,9 +16,17 @@ public class Pelialue {
     private Pelaaja pelaaja;
     private int[][] miinojaVieressa;
 
+    /**
+     * Luo pelialueen annettujen parametrien mukaan
+     * 
+     * @param alueenKoko    Ruutujen määrä korkeus- ja leveyssuunnassa
+     * @param miinat        Todennäköisyys, millä ruutu on miina
+     * @param pelaaja       Pelialueelle sijoitettava pelaaja
+     * @param eiMahdottomia Halutaanko ruudukosta aina mahdollinen
+     */
     public Pelialue(int alueenKoko, int miinat, Pelaaja pelaaja, boolean eiMahdottomia) {
         this.pelaaja = pelaaja;
-        pelaaja.asetaPelialue(this);
+        pelaaja.setPelialue(this);
         ruudukko = new int[alueenKoko][alueenKoko];
         avatutRuudut = new boolean[alueenKoko][alueenKoko];
         avatutRuudut[alueenKoko - 1][alueenKoko - 1] = true;
@@ -27,13 +35,21 @@ public class Pelialue {
         ruudukko[alueenKoko - 1][alueenKoko - 1] = 4;
         luoMiinojaVieressaTaulukko();
 
-        graafinenPelialue = new GraafinenPelialue(this, alueenKoko);
+        graafinenPelialue = new GraafinenPelialue(this);
         paivitaPelaajanSijainti(0, 0, 0, 0);
-        paivitaAvatutRuudut(0, 0);
+        paivitaAvatutRuudut();
         luoGrafiikat();
 
     }
-
+    
+    /**
+     * Päivittää pelaajan sijainnin taulukossa
+     * 
+     * @param edellinenX    x-koordinaatti, mistä pelaaja tuli
+     * @param edellinenY    y-koordinaatti, mistä pelaaja tuli
+     * @param x             x-koordinaatti, mihin pelaaja siirtyi
+     * @param y             y-koordinaatti, mihin pelaaja siirtyi
+     */
     public void paivitaPelaajanSijainti(int edellinenX, int edellinenY, int x, int y) {
         ruudukko[edellinenY][edellinenX] = 0;
         if (ruudukko[y][x] == 4) {
@@ -43,15 +59,18 @@ public class Pelialue {
             pelaajaOsuiMiinaan();
         } else {
             ruudukko[y][x] = 1;
-            paivitaAvatutRuudut(x, y);
+            paivitaAvatutRuudut();
             graafinenPelialue.paivitaGraafinenPelialue();
         }
         System.out.println(miinojaVieressa[y][x]);
     }
 
-    public void paivitaAvatutRuudut(int x, int y) {
+    /**
+     * Avaa ruudut jotka pelaaja "näkee"
+     */
+    public void paivitaAvatutRuudut() {
         avaaRuudutJoidenVieressaEiOleMiinoja(pelaaja.getX(), pelaaja.getY(), new boolean[getKoko()][getKoko()]);
-        avatutRuudut[y][x] = true;
+        avatutRuudut[pelaaja.getY()][pelaaja.getX()] = true;
     }
 
     public int getKoko() {
@@ -149,8 +168,8 @@ public class Pelialue {
         return this.pelaaja;
     }
 
-    public void lisaaNappaimistonkuuntelija() {
-        graafinenPelialue.lisaaNappaimistonkuuntelija();
+    public void setNappaimistonkuuntelija() {
+        graafinenPelialue.setNappaimistonkuuntelija();
     }
 
     private void luoMiinojaVieressaTaulukko() {

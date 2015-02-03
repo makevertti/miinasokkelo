@@ -15,7 +15,13 @@ public class Pelaaja {
     private int edellinenY;
 
     private boolean osunutMiinaan;
-
+    
+    /**
+     * Luo pelaajan määriteltyyn sijaintiin
+     * 
+     * @param x     Pelaajan x-koordinaatti 
+     * @param y     Pelaajan y-koordinaatti
+     */
     public Pelaaja(int x, int y) {
         sijaintiX = x;
         sijaintiY = y;
@@ -26,6 +32,13 @@ public class Pelaaja {
         osunutMiinaan = false;
     }
 
+    /**
+     * Siirtää pelaajaa yhden ruudun annettuun suuntaan
+     * 
+     * @param   Suunta johon pelaajaa liikutetaan 
+     *          vaihtoehdot: "ylös", "yläoikea", "oikea",
+     *          "alaoikea", "alas", "alavasen", "vasen", "ylävasen"
+     */
     public void liiku(String suunta) {
         if (osunutMiinaan) {
             return;
@@ -122,8 +135,8 @@ public class Pelaaja {
     public int getY() {
         return this.sijaintiY;
     }
-
-    public void asetaPelialue(Pelialue pelialue) {
+    
+    public void setPelialue(Pelialue pelialue) {
         this.pelialue = pelialue;
     }
 }
