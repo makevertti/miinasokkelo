@@ -20,7 +20,7 @@ public class Pelialue {
      * Luo pelialueen annettujen parametrien mukaan
      * 
      * @param alueenKoko    Ruutujen määrä korkeus- ja leveyssuunnassa
-     * @param miinat        Todennäköisyys, millä ruutu on miina
+     * @param miinat        Miinojen määrä
      * @param pelaaja       Pelialueelle sijoitettava pelaaja
      * @param eiMahdottomia Halutaanko ruudukosta aina mahdollinen
      */
@@ -36,7 +36,7 @@ public class Pelialue {
         luoMiinojaVieressaTaulukko();
 
         graafinenPelialue = new GraafinenPelialue(this);
-        paivitaPelaajanSijainti(0, 0, 0, 0);
+        paivitaPelaajanSijainti(pelaaja.getX(), pelaaja.getY(), pelaaja.getX(), pelaaja.getY());
         paivitaAvatutRuudut();
         luoGrafiikat();
 
@@ -62,7 +62,6 @@ public class Pelialue {
             paivitaAvatutRuudut();
             graafinenPelialue.paivitaGraafinenPelialue();
         }
-        System.out.println(miinojaVieressa[y][x]);
     }
 
     /**
@@ -80,12 +79,15 @@ public class Pelialue {
     private void lisaaMiinat(int maara, int alueenKoko, boolean eiMahdottomia) {
         random = new Random();
         int miinaRuudut[][] = new int[alueenKoko][alueenKoko];
-
-        for (int y = 0; y < miinaRuudut.length; y++) {
-            for (int x = 0; x < miinaRuudut.length; x++) {
-                if (random.nextInt(100) < maara) {
-                    miinaRuudut[y][x] = 2;
-                }
+        int miinojaLisatty = 0;
+        
+        while (miinojaLisatty < maara) {
+            int randomX = random.nextInt(alueenKoko);
+            int randomY = random.nextInt(alueenKoko);
+            
+            if (miinaRuudut[randomY][randomX] != 2 && !(randomX == 0 && randomY == 0)) {
+                miinaRuudut[randomY][randomX] = 2;
+                miinojaLisatty++;
             }
         }
 
@@ -126,28 +128,11 @@ public class Pelialue {
         return reitit;
     }
 
-    private void pelaajaOsuiMiinaan() { //Peli loppuu
-        System.out.println("Miina!");
+    private void pelaajaOsuiMiinaan() {
         pelaaja.poistaOhjaus();
         graafinenPelialue.naytaKaikkiMiinat();
     }
 
-//    public void tulosta() {
-//        for (int i = 0; i < ruudukko.length; i++) {
-//            for (int j = 0; j < ruudukko.length; j++) {
-//                System.out.print(ruudukko[i][j]);                
-//            }
-//            System.out.println("");
-//        }
-//    }
-//    public void tulostaAvatutRuudut() {
-//        for (int i = 0; i < avatutRuudut.length; i++) {
-//            for (int j = 0; j < avatutRuudut.length; j++) {
-//                System.out.print(avatutRuudut[i][j]);
-//            }
-//            System.out.println("");            
-//        }
-//    }
     public int getRuutu(int x, int y) {
         return ruudukko[y][x];
     }

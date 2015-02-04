@@ -20,7 +20,7 @@ public class PelaajaTest {
         pelaaja3 = new Pelaaja(0, 0);
         
         pelialue = new Pelialue(10, 0, pelaaja, false);
-        pelialue2 = new Pelialue(10, 100, pelaaja2, false);
+        pelialue2 = new Pelialue(10, 98, pelaaja2, false);
         pelialue3 = new Pelialue(1, 0, pelaaja3, false);
     }
     

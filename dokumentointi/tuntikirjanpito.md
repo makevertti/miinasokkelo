@@ -49,3 +49,7 @@
 #### 3.2
 
 1:10 h - Metodien javadocceja. Pientä refaktorointia. Miinanumero ilmestyy myös ruutuun, missä pelaaja on.
+
+#### 4.2
+
+50 min - Miinoja lisätään nyt aina se määrä mikä annetaan parametrina (aiemmin todennäköisyys). Bugi pelaajan aloitussijaintiin liittyen korjattu. Uusia testejä.
