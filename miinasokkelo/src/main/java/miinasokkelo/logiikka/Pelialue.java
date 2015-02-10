@@ -81,6 +81,25 @@ public class Pelialue {
         int miinaRuudut[][] = new int[alueenKoko][alueenKoko];
         int miinojaLisatty = 0;
         
+        lisaaMiinatValiaikaistaulukkoon(miinojaLisatty, maara, alueenKoko, miinaRuudut);
+
+        if (eiMahdottomia) {
+            if (mahdollisetReitit(miinaRuudut, 0, 0, new boolean[alueenKoko][alueenKoko]) == 0) {
+                lisaaMiinat(maara, alueenKoko, eiMahdottomia);
+            }
+        }
+        lisaaMiinatValiaikaistaulukostaVarsinaiseenTaulukkoon(miinaRuudut);
+    }
+
+    private void lisaaMiinatValiaikaistaulukostaVarsinaiseenTaulukkoon(int[][] miinaRuudut) {
+        for (int i = 0; i < miinaRuudut.length; i++) {
+            for (int j = 0; j < miinaRuudut.length; j++) {
+                ruudukko[j][i] = miinaRuudut[j][i];
+            }
+        }
+    }
+
+    private void lisaaMiinatValiaikaistaulukkoon(int miinojaLisatty, int maara, int alueenKoko, int[][] miinaRuudut) {
         while (miinojaLisatty < maara) {
             int randomX = random.nextInt(alueenKoko);
             int randomY = random.nextInt(alueenKoko);
@@ -88,17 +107,6 @@ public class Pelialue {
             if (miinaRuudut[randomY][randomX] != 2 && !(randomX == 0 && randomY == 0)) {
                 miinaRuudut[randomY][randomX] = 2;
                 miinojaLisatty++;
-            }
-        }
-
-        if (eiMahdottomia) {
-            if (mahdollisetReitit(miinaRuudut, 0, 0, new boolean[alueenKoko][alueenKoko]) == 0) {
-                lisaaMiinat(maara, alueenKoko, eiMahdottomia);
-            }
-        }
-        for (int i = 0; i < miinaRuudut.length; i++) {
-            for (int j = 0; j < miinaRuudut.length; j++) {
-                ruudukko[j][i] = miinaRuudut[j][i];
             }
         }
     }
@@ -116,6 +124,12 @@ public class Pelialue {
 
         int reitit = 0;
 
+        reitit = kayReititLapiRekursiivisesti(reitit, miinaRuudut, x, y, kayty);
+
+        return reitit;
+    }
+
+    private int kayReititLapiRekursiivisesti(int reitit, int[][] miinaRuudut, int x, int y, boolean[][] kayty) {
         reitit += mahdollisetReitit(miinaRuudut, x + 1, y, kayty);
         reitit += mahdollisetReitit(miinaRuudut, x - 1, y, kayty);
         reitit += mahdollisetReitit(miinaRuudut, x, y + 1, kayty);
@@ -124,7 +138,6 @@ public class Pelialue {
         reitit += mahdollisetReitit(miinaRuudut, x + 1, y + 1, kayty);
         reitit += mahdollisetReitit(miinaRuudut, x - 1, y + 1, kayty);
         reitit += mahdollisetReitit(miinaRuudut, x - 1, y - 1, kayty);
-
         return reitit;
     }
 
@@ -160,24 +173,28 @@ public class Pelialue {
     private void luoMiinojaVieressaTaulukko() {
         for (int y = 0; y < ruudukko.length; y++) {
             for (int x = 0; x < ruudukko.length; x++) {
-                int maara = 0;
-
-                for (int y2 = -1; y2 <= 1; y2++) {
-                    if ((y + y2 < 0) || (y + y2 >= ruudukko.length)) {
-                        continue;
-                    }
-                    for (int x2 = -1; x2 <= 1; x2++) {
-                        if ((x + x2 < 0) || (x + x2 >= ruudukko.length)) {
-                            continue;
-                        }
-                        if (ruudukko[y + y2][x + x2] == 2) {
-                            maara++;
-                        }
-                    }
-                }
-                miinojaVieressa[y][x] = maara;
+                laskeRuudunYmparillaOlevatMiinat(y, x);
             }
         }
+    }
+
+    private void laskeRuudunYmparillaOlevatMiinat(int y, int x) {
+        int maara = 0;
+        
+        for (int y2 = -1; y2 <= 1; y2++) {
+            if ((y + y2 < 0) || (y + y2 >= ruudukko.length)) {
+                continue;
+            }
+            for (int x2 = -1; x2 <= 1; x2++) {
+                if ((x + x2 < 0) || (x + x2 >= ruudukko.length)) {
+                    continue;
+                }
+                if (ruudukko[y + y2][x + x2] == 2) {
+                    maara++;
+                }
+            }
+        }
+        miinojaVieressa[y][x] = maara;
     }
 
     public int getMiinatRuudunYmparilla(int y, int x) {
@@ -190,7 +207,7 @@ public class Pelialue {
         graafinenPelialue.naytaKaikkiMiinat();
     }
 
-    private void avaaRuudutJoidenVieressaEiOleMiinoja(int x, int y, boolean kayty[][]) {    //Ei kovin kaunis ... tarvii keksiä jotain...
+    private void avaaRuudutJoidenVieressaEiOleMiinoja(int x, int y, boolean kayty[][]) {
         if (x < 0 || y < 0 || x > getKoko() - 1 || y > getKoko() - 1 || kayty[y][x] == true || miinojaVieressa[y][x] != 0) {
             return;
         }
@@ -198,6 +215,23 @@ public class Pelialue {
         avatutRuudut[y][x] = true;
         
         
+        tarkistaEttaRuutuOnPelialueella(x, y);
+        
+        avaaRuudutRekursiivisesti(x, y, kayty);
+    }
+
+    private void avaaRuudutRekursiivisesti(int x, int y, boolean[][] kayty) {
+        avaaRuudutJoidenVieressaEiOleMiinoja(x + 1, y, kayty);
+        avaaRuudutJoidenVieressaEiOleMiinoja(x - 1, y, kayty);
+        avaaRuudutJoidenVieressaEiOleMiinoja(x, y + 1, kayty);
+        avaaRuudutJoidenVieressaEiOleMiinoja(x, y - 1, kayty);
+        avaaRuudutJoidenVieressaEiOleMiinoja(x + 1, y + 1, kayty);
+        avaaRuudutJoidenVieressaEiOleMiinoja(x - 1, y - 1, kayty);
+        avaaRuudutJoidenVieressaEiOleMiinoja(x + 1, y - 1, kayty);
+        avaaRuudutJoidenVieressaEiOleMiinoja(x - 1, y + 1, kayty);
+    }
+
+    private void tarkistaEttaRuutuOnPelialueella(int x, int y) {
         if (onkoAlueella(x, y + 1)) {
             avatutRuudut[y + 1][x] = true;
         }
@@ -222,14 +256,6 @@ public class Pelialue {
         if (onkoAlueella(x + 1, y - 1)) {
             avatutRuudut[y - 1][x + 1] = true;
         }
-        avaaRuudutJoidenVieressaEiOleMiinoja(x + 1, y, kayty);
-        avaaRuudutJoidenVieressaEiOleMiinoja(x - 1, y, kayty);
-        avaaRuudutJoidenVieressaEiOleMiinoja(x, y + 1, kayty);
-        avaaRuudutJoidenVieressaEiOleMiinoja(x, y - 1, kayty);
-        avaaRuudutJoidenVieressaEiOleMiinoja(x + 1, y + 1, kayty);
-        avaaRuudutJoidenVieressaEiOleMiinoja(x - 1, y - 1, kayty);
-        avaaRuudutJoidenVieressaEiOleMiinoja(x + 1, y - 1, kayty);
-        avaaRuudutJoidenVieressaEiOleMiinoja(x - 1, y + 1, kayty);
     }
     
     private boolean onkoAlueella(int x, int y) {

@@ -45,74 +45,107 @@ public class Pelaaja {
         }
         switch (suunta) {
             case "ylös":
-                if (sijaintiY - 1 < 0) {
-                    break;
-                }
-                paivitaEdellinenSijainti();
-                sijaintiY--;
+                liikuYlos();
                 break;
-
             case "yläoikea":
-                if (sijaintiY - 1 < 0 || sijaintiX + 1 > pelialue.getKoko() - 1) {
-                    break;
-                }
-                paivitaEdellinenSijainti();
-                sijaintiY--;
-                sijaintiX++;
+                liikuYlaOikealle();
                 break;
-
             case "oikea":
-                if (sijaintiX + 1 > pelialue.getKoko() - 1) {
-                    break;
-                }
-                paivitaEdellinenSijainti();
-                sijaintiX++;
+                liikuOikealle();
                 break;
-
             case "alaoikea":
-                if (sijaintiY + 1 > pelialue.getKoko() - 1 || sijaintiX + 1 > pelialue.getKoko() - 1) {
-                    break;
-                }
-                paivitaEdellinenSijainti();
-                sijaintiY++;
-                sijaintiX++;
+                liikuAlaOikealle();
                 break;
-
             case "alas":
-                if (sijaintiY + 1 > pelialue.getKoko() - 1) {
-                    break;
-                }
-                paivitaEdellinenSijainti();
-                sijaintiY++;
+                liikuAlas();
                 break;
-
             case "alavasen":
-                if (sijaintiY + 1 > pelialue.getKoko() - 1 || sijaintiX - 1 < 0) {
-                    break;
-                }
-                paivitaEdellinenSijainti();
-                sijaintiY++;
-                sijaintiX--;
+                liikuAlaVasemmalle();
                 break;
-
             case "vasen":
-                if (sijaintiX - 1 < 0) {
-                    break;
-                }
-                paivitaEdellinenSijainti();
-                sijaintiX--;
+                liikuVasemmalle();
                 break;
-
             case "ylävasen":
-                if (sijaintiY - 1 < 0 || sijaintiX - 1 < 0) {
-                    break;
-                }
-                paivitaEdellinenSijainti();
-                sijaintiY--;
-                sijaintiX--;
+                liikuYlaVasemmalle();
                 break;
         }
         paivitaPelaajanSijainti();
+    }
+
+    private void liikuYlaVasemmalle() {
+        if (sijaintiY - 1 < 0 || sijaintiX - 1 < 0) {
+            return;
+        }
+        paivitaEdellinenSijainti();
+        sijaintiY--;
+        sijaintiX--;
+        return;
+    }
+
+    private void liikuVasemmalle() {
+        if (sijaintiX - 1 < 0) {
+            return;
+        }
+        paivitaEdellinenSijainti();
+        sijaintiX--;
+        return;
+    }
+
+    private void liikuAlaVasemmalle() {
+        if (sijaintiY + 1 > pelialue.getKoko() - 1 || sijaintiX - 1 < 0) {
+            return;
+        }
+        paivitaEdellinenSijainti();
+        sijaintiY++;
+        sijaintiX--;
+        return;
+    }
+
+    private void liikuAlas() {
+        if (sijaintiY + 1 > pelialue.getKoko() - 1) {
+            return;
+        }
+        paivitaEdellinenSijainti();
+        sijaintiY++;
+        return;
+    }
+
+    private void liikuAlaOikealle() {
+        if (sijaintiY + 1 > pelialue.getKoko() - 1 || sijaintiX + 1 > pelialue.getKoko() - 1) {
+            return;
+        }
+        paivitaEdellinenSijainti();
+        sijaintiY++;
+        sijaintiX++;
+        return;
+    }
+
+    private void liikuOikealle() {
+        if (sijaintiX + 1 > pelialue.getKoko() - 1) {
+            return;
+        }
+        paivitaEdellinenSijainti();
+        sijaintiX++;
+        return;
+    }
+
+    private void liikuYlaOikealle() {
+        if (sijaintiY - 1 < 0 || sijaintiX + 1 > pelialue.getKoko() - 1) {
+            return;
+        }
+        paivitaEdellinenSijainti();
+        sijaintiY--;
+        sijaintiX++;
+        return;
+    }
+
+    private void liikuYlos() {
+        if (sijaintiY - 1 < 0) {
+            return;
+        }
+        paivitaEdellinenSijainti();
+        sijaintiY--;
+        return;
     }
 
     private void paivitaPelaajanSijainti() {
