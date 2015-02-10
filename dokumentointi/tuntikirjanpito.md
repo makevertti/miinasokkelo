@@ -53,3 +53,7 @@
 #### 4.2
 
 50 min - Miinoja lisätään nyt aina se määrä mikä annetaan parametrina (aiemmin todennäköisyys). Bugi pelaajan aloitussijaintiin liittyen korjattu. Uusia testejä.
+
+#### 10.2 
+
+1 h - Refaktorointia, alkuvalikko + vaikeustasovalitsin
