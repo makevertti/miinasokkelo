@@ -57,3 +57,7 @@
 #### 10.2 
 
 1 h - Refaktorointia, alkuvalikko + vaikeustasovalitsin
+
+#### 12.2
+
+1:30 h - Pelin uudelleenaloitus/nollaus (nappi: ESC), testejä, sekvenssikaavioita

@@ -8,16 +8,16 @@ import org.junit.Before;
 public class PelialueTest {
     
     Pelaaja pelaaja;
+    Pelaaja pelaaja2;
     Pelialue pelialue;
     Pelialue pelialue2;
 
-    
     @Before
     public void setUp() {
         pelaaja = new Pelaaja(0, 0);
+        pelaaja2 = new Pelaaja(0, 0);
         pelialue = new Pelialue(5, 0, pelaaja, false);
-        
-        pelialue2 = new Pelialue(20, 50, pelaaja, false);
+        pelialue2 = new Pelialue(20, 50, pelaaja2, false);
     }
     
     @Test
@@ -58,4 +58,23 @@ public class PelialueTest {
         
         return miinat;
     }
+    
+    @Test
+    public void eiMahdottomiaAsetusToimii() {
+        pelialue = new Pelialue(2, 2, pelaaja, true);
+        assertEquals(1, pelialue.getRuutu(0, 0));
+        assertEquals(4, pelialue.getRuutu(1, 1));
+    }
+    
+    @Test
+    public void maaliinPaaseminenPoistaaPelaajanOhjauksen() {
+        pelaaja.liiku("alaoikea");
+        pelaaja.liiku("alaoikea");
+        pelaaja.liiku("alaoikea");
+        pelaaja.liiku("alaoikea");
+        pelaaja.liiku("ylÃ¶s");
+        
+        assertEquals(4, pelaaja.getX());
+        assertEquals(4, pelaaja.getY());
+    } 
 }

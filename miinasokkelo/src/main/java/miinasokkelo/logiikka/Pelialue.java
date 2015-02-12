@@ -38,7 +38,7 @@ public class Pelialue {
         graafinenPelialue = new GraafinenPelialue(this);
         paivitaPelaajanSijainti(pelaaja.getX(), pelaaja.getY(), pelaaja.getX(), pelaaja.getY());
         paivitaAvatutRuudut();
-        luoGrafiikat();
+        luoPeliIkkuna();
 
     }
     
@@ -123,9 +123,7 @@ public class Pelialue {
         }
 
         int reitit = 0;
-
         reitit = kayReititLapiRekursiivisesti(reitit, miinaRuudut, x, y, kayty);
-
         return reitit;
     }
 
@@ -154,7 +152,7 @@ public class Pelialue {
         return avatutRuudut[y][x];
     }
 
-    private void luoGrafiikat() {
+    private void luoPeliIkkuna() {
         JFrame ikkuna = new JFrame("miinasokkelo");
         ikkuna.add(graafinenPelialue);
         ikkuna.setSize(800, 800);
@@ -213,10 +211,7 @@ public class Pelialue {
         }
         kayty[y][x] = true;
         avatutRuudut[y][x] = true;
-        
-        
         tarkistaEttaRuutuOnPelialueella(x, y);
-        
         avaaRuudutRekursiivisesti(x, y, kayty);
     }
 

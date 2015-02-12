@@ -60,6 +60,9 @@ public class Nappaimistokuuntelija implements KeyListener {
             case KeyEvent.VK_NUMPAD9:
                 pelaaja.liiku("yläoikea");
                 break;
+                
+            case KeyEvent.VK_ESCAPE:
+                pelaaja.uusiPeli();
         }
     }
 

@@ -1,6 +1,10 @@
 
 package miinasokkelo.logiikka;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  * Kuvaa pelaajan sijaintia pelialueella.
  * Sisältää metodeja pelaajan liikkumiseen liittyen 
@@ -10,10 +14,8 @@ public class Pelaaja {
     private Pelialue pelialue;
     private int sijaintiX;
     private int sijaintiY;
-
     private int edellinenX;
     private int edellinenY;
-
     private boolean osunutMiinaan;
     
     /**
@@ -25,10 +27,8 @@ public class Pelaaja {
     public Pelaaja(int x, int y) {
         sijaintiX = x;
         sijaintiY = y;
-
         edellinenX = x;
         edellinenY = y;
-
         osunutMiinaan = false;
     }
 
@@ -79,7 +79,6 @@ public class Pelaaja {
         paivitaEdellinenSijainti();
         sijaintiY--;
         sijaintiX--;
-        return;
     }
 
     private void liikuVasemmalle() {
@@ -88,7 +87,6 @@ public class Pelaaja {
         }
         paivitaEdellinenSijainti();
         sijaintiX--;
-        return;
     }
 
     private void liikuAlaVasemmalle() {
@@ -98,7 +96,6 @@ public class Pelaaja {
         paivitaEdellinenSijainti();
         sijaintiY++;
         sijaintiX--;
-        return;
     }
 
     private void liikuAlas() {
@@ -107,7 +104,6 @@ public class Pelaaja {
         }
         paivitaEdellinenSijainti();
         sijaintiY++;
-        return;
     }
 
     private void liikuAlaOikealle() {
@@ -117,7 +113,6 @@ public class Pelaaja {
         paivitaEdellinenSijainti();
         sijaintiY++;
         sijaintiX++;
-        return;
     }
 
     private void liikuOikealle() {
@@ -126,7 +121,6 @@ public class Pelaaja {
         }
         paivitaEdellinenSijainti();
         sijaintiX++;
-        return;
     }
 
     private void liikuYlaOikealle() {
@@ -136,7 +130,6 @@ public class Pelaaja {
         paivitaEdellinenSijainti();
         sijaintiY--;
         sijaintiX++;
-        return;
     }
 
     private void liikuYlos() {
@@ -145,7 +138,6 @@ public class Pelaaja {
         }
         paivitaEdellinenSijainti();
         sijaintiY--;
-        return;
     }
 
     private void paivitaPelaajanSijainti() {
@@ -171,5 +163,14 @@ public class Pelaaja {
     
     public void setPelialue(Pelialue pelialue) {
         this.pelialue = pelialue;
+    }
+
+    public void uusiPeli() {
+        try {
+            Runtime.getRuntime().exec("java -jar miinasokkelo-1.0.jar");
+        } catch (IOException ex) {
+            Logger.getLogger(Pelaaja.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.exit(0);
     }
 }

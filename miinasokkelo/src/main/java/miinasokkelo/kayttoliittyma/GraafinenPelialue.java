@@ -1,4 +1,3 @@
-
 package miinasokkelo.kayttoliittyma;
 
 import java.awt.Color;
@@ -7,27 +6,26 @@ import javax.swing.JPanel;
 import miinasokkelo.logiikka.Pelialue;
 
 /**
- * Luo Pelialue -luokan tietojen perusteella graafisen
- * esityksen pelialueesta
+ * Luo Pelialue -luokan tietojen perusteella graafisen esityksen pelialueesta
  */
 public class GraafinenPelialue extends JPanel {
     private GrafiikkaRuutu grafiikkaRuudut[][];
     private Pelialue pelialue;
     private Nappaimistokuuntelija nappaimistokuuntelija;
-    
+
     /**
      * Luo graafisen pelialueen pohjan
-     * 
-     * @param alue  pelialue josta graafinen versio halutaan tehdä
+     *
+     * @param alue pelialue josta graafinen versio halutaan tehdä
      */
     public GraafinenPelialue(Pelialue alue) {
         pelialue = alue;
-        
+
         this.setSize(800, 800);
         this.setBackground(Color.WHITE);
         this.setLayout(new GridLayout(pelialue.getKoko(), pelialue.getKoko(), 1, 1));
         grafiikkaRuudut = new GrafiikkaRuutu[pelialue.getKoko()][pelialue.getKoko()];
-        
+
         for (int i = 0; i < pelialue.getKoko(); i++) {
             for (int j = 0; j < pelialue.getKoko(); j++) {
                 grafiikkaRuudut[j][i] = new GrafiikkaRuutu();
@@ -36,10 +34,9 @@ public class GraafinenPelialue extends JPanel {
             }
         }
     }
-    
+
     /**
-     * Päivittää graafisen pelialueen 
-     * Pelialue -luokan ruudukkoa vastaavaksi
+     * Päivittää graafisen pelialueen Pelialue -luokan ruudukkoa vastaavaksi
      */
     public void paivitaGraafinenPelialue() {
         for (int i = 0; i < pelialue.getKoko(); i++) {
@@ -68,7 +65,7 @@ public class GraafinenPelialue extends JPanel {
         addKeyListener(nappaimistokuuntelija);
         setFocusable(true);
     }
-    
+
     /**
      * Näyttää kaikkien miinojen sijainnit
      */
