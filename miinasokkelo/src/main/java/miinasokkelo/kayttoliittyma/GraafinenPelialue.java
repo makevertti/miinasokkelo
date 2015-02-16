@@ -2,6 +2,10 @@ package miinasokkelo.kayttoliittyma;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import miinasokkelo.logiikka.Pelialue;
 
@@ -79,5 +83,42 @@ public class GraafinenPelialue extends JPanel {
                 }
             }
         }
+    }
+
+    /**
+     * Luo peli-ikkunan
+     */
+    public void luoPeliIkkuna() {
+        JFrame ikkuna = new JFrame("miinasokkelo");
+        ikkuna.add(this);
+        ikkuna.setSize(800, 800);
+        ikkuna.setLocationRelativeTo(null);
+        ikkuna.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ikkuna.setVisible(true);
+    }
+
+    /**
+     * Näyttää napin mikä aloittaa pelin uudelleen
+     * @param otsikko Määrittää ikkunan otsikkona käytettävän tekstin
+     */
+    public void naytaUusiPeliKysymys(String otsikko) {
+        JFrame miinaviesti = new JFrame(otsikko);
+        miinaviesti.setSize(200, 55);
+        miinaviesti.setLocationRelativeTo(null);
+        
+        final JButton uusiPeliNappi = new JButton("Uusi peli?", null);
+        
+        ActionListener nappiListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == uusiPeliNappi) {
+                    pelialue.uusiPeli();
+                }
+            }
+        };       
+        miinaviesti.add(uusiPeliNappi);
+        uusiPeliNappi.addActionListener(nappiListener); 
+        
+        miinaviesti.setVisible(true);
     }
 }

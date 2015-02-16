@@ -165,6 +165,9 @@ public class Pelaaja {
         this.pelialue = pelialue;
     }
 
+    /**
+     * Aloittaa pelin uudelleen
+     */
     public void uusiPeli() {
         try {
             Runtime.getRuntime().exec("java -jar miinasokkelo-1.0.jar");

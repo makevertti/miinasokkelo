@@ -1,7 +1,6 @@
 package miinasokkelo.logiikka;
 
 import java.util.Random;
-import javax.swing.JFrame;
 import miinasokkelo.kayttoliittyma.GraafinenPelialue;
 
 /**
@@ -38,7 +37,7 @@ public class Pelialue {
         graafinenPelialue = new GraafinenPelialue(this);
         paivitaPelaajanSijainti(pelaaja.getX(), pelaaja.getY(), pelaaja.getX(), pelaaja.getY());
         paivitaAvatutRuudut();
-        luoPeliIkkuna();
+        graafinenPelialue.luoPeliIkkuna();
 
     }
     
@@ -104,7 +103,7 @@ public class Pelialue {
             int randomX = random.nextInt(alueenKoko);
             int randomY = random.nextInt(alueenKoko);
             
-            if (miinaRuudut[randomY][randomX] != 2 && !(randomX == 0 && randomY == 0)) {
+            if (miinaRuudut[randomY][randomX] != 2 && !(randomX == 0 && randomY == 0) && !(randomX == alueenKoko - 1 && randomY == alueenKoko - 1)) {
                 miinaRuudut[randomY][randomX] = 2;
                 miinojaLisatty++;
             }
@@ -142,6 +141,7 @@ public class Pelialue {
     private void pelaajaOsuiMiinaan() {
         pelaaja.poistaOhjaus();
         graafinenPelialue.naytaKaikkiMiinat();
+        graafinenPelialue.naytaUusiPeliKysymys("Miina!");
     }
 
     public int getRuutu(int x, int y) {
@@ -150,14 +150,6 @@ public class Pelialue {
 
     public boolean getOnkoAvattu(int x, int y) {
         return avatutRuudut[y][x];
-    }
-
-    private void luoPeliIkkuna() {
-        JFrame ikkuna = new JFrame("miinasokkelo");
-        ikkuna.add(graafinenPelialue);
-        ikkuna.setSize(800, 800);
-        ikkuna.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        ikkuna.setVisible(true);
     }
 
     public Pelaaja getPelaaja() {
@@ -200,9 +192,9 @@ public class Pelialue {
     }
 
     private void tasoSuoritettu() {
-        System.out.println("Taso suoritettu!");
         pelaaja.poistaOhjaus();
         graafinenPelialue.naytaKaikkiMiinat();
+        graafinenPelialue.naytaUusiPeliKysymys("Taso Suoritettu!");
     }
 
     private void avaaRuudutJoidenVieressaEiOleMiinoja(int x, int y, boolean kayty[][]) {
@@ -258,5 +250,9 @@ public class Pelialue {
             return false;
         }
         return true;
+    }
+    
+    public void uusiPeli() {
+        pelaaja.uusiPeli();
     }
 }

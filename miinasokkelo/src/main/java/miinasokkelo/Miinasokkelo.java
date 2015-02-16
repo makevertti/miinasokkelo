@@ -23,11 +23,11 @@ public class Miinasokkelo {
             pelialueenKoko = 20;
             miinat = 32;
         } else if (vaikeustaso.equals("Normaali")) {
-            pelialueenKoko = 30;
-            miinat = 85;
+            pelialueenKoko = 25;
+            miinat = 75;
         } else if (vaikeustaso.equals("Vaikea")) {
-            pelialueenKoko = 40;
-            miinat = 150;
+            pelialueenKoko = 30;
+            miinat = 100;
         }
         Pelialue pelialue = new Pelialue(pelialueenKoko, miinat, new Pelaaja(0, 0), true);
         pelialue.setNappaimistonkuuntelija();
