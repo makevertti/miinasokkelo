@@ -61,3 +61,7 @@
 #### 12.2
 
 1:30 h - Pelin uudelleenaloitus/nollaus (nappi: ESC), testejä, sekvenssikaavioita
+
+#### 16.2
+
+1:10 h - Pelin päättyessä näytetään "uusi peli" -ikkuna. Graafisen peli-ikkunan luontimetodi siirretty Pelialue luokasta GraafinenPelialue luokkaan. Miinojen lisäämisessä ollut bugi korjattu.
