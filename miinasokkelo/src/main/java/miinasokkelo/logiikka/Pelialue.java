@@ -1,3 +1,4 @@
+
 package miinasokkelo.logiikka;
 
 import java.util.Random;
@@ -52,10 +53,10 @@ public class Pelialue {
     public void paivitaPelaajanSijainti(int edellinenX, int edellinenY, int x, int y) {
         ruudukko[edellinenY][edellinenX] = 0;
         if (ruudukko[y][x] == 4) {
-            tasoSuoritettu();
+            peliPaattyi("Taso suoritettu!");
         } else if (ruudukko[y][x] == 2) {
             ruudukko[y][x] = 3;
-            pelaajaOsuiMiinaan();
+            peliPaattyi("Miina!");
         } else {
             ruudukko[y][x] = 1;
             paivitaAvatutRuudut();
@@ -138,10 +139,10 @@ public class Pelialue {
         return reitit;
     }
 
-    private void pelaajaOsuiMiinaan() {
+    private void peliPaattyi(String otsikko) {
         pelaaja.poistaOhjaus();
         graafinenPelialue.naytaKaikkiMiinat();
-        graafinenPelialue.naytaUusiPeliKysymys("Miina!");
+        graafinenPelialue.naytaUusiPeliKysymys(otsikko);
     }
 
     public int getRuutu(int x, int y) {
@@ -189,12 +190,6 @@ public class Pelialue {
 
     public int getMiinatRuudunYmparilla(int y, int x) {
         return miinojaVieressa[y][x];
-    }
-
-    private void tasoSuoritettu() {
-        pelaaja.poistaOhjaus();
-        graafinenPelialue.naytaKaikkiMiinat();
-        graafinenPelialue.naytaUusiPeliKysymys("Taso Suoritettu!");
     }
 
     private void avaaRuudutJoidenVieressaEiOleMiinoja(int x, int y, boolean kayty[][]) {

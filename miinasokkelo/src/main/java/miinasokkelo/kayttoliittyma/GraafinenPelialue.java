@@ -1,3 +1,4 @@
+
 package miinasokkelo.kayttoliittyma;
 
 import java.awt.Color;
@@ -111,9 +112,7 @@ public class GraafinenPelialue extends JPanel {
         ActionListener nappiListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (e.getSource() == uusiPeliNappi) {
                     pelialue.uusiPeli();
-                }
             }
         };       
         miinaviesti.add(uusiPeliNappi);

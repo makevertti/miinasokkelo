@@ -32,32 +32,56 @@ public class Nappaimistokuuntelija implements KeyListener {
             case KeyEvent.VK_NUMPAD1:
                 pelaaja.liiku("alavasen");
                 break;
+            case KeyEvent.VK_Z:
+                pelaaja.liiku("alavasen");
+                break;
                 
             case KeyEvent.VK_NUMPAD2:
+                pelaaja.liiku("alas");
+                break;
+            case KeyEvent.VK_X:
                 pelaaja.liiku("alas");
                 break;
                 
             case KeyEvent.VK_NUMPAD3:
                 pelaaja.liiku("alaoikea");
                 break;
+            case KeyEvent.VK_C:
+                pelaaja.liiku("alaoikea");
+                break;
                 
             case KeyEvent.VK_NUMPAD4:
+                pelaaja.liiku("vasen");
+                break;
+            case KeyEvent.VK_A:
                 pelaaja.liiku("vasen");
                 break;
                 
             case KeyEvent.VK_NUMPAD6:
                 pelaaja.liiku("oikea");
                 break;
+            case KeyEvent.VK_D:
+                pelaaja.liiku("oikea");
+                break;
                 
             case KeyEvent.VK_NUMPAD7:
+                pelaaja.liiku("ylävasen");
+                break;
+            case KeyEvent.VK_Q:
                 pelaaja.liiku("ylävasen");
                 break;
                 
             case KeyEvent.VK_NUMPAD8:
                 pelaaja.liiku("ylös");
                 break;
+            case KeyEvent.VK_W:
+                pelaaja.liiku("ylös");
+                break;
                 
             case KeyEvent.VK_NUMPAD9:
+                pelaaja.liiku("yläoikea");
+                break;
+            case KeyEvent.VK_E:
                 pelaaja.liiku("yläoikea");
                 break;
                 

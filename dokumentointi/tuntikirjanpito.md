@@ -65,3 +65,7 @@
 #### 16.2
 
 1:10 h - Pelin päättyessä näytetään "uusi peli" -ikkuna. Graafisen peli-ikkunan luontimetodi siirretty Pelialue luokasta GraafinenPelialue luokkaan. Miinojen lisäämisessä ollut bugi korjattu.
+
+#### 19.2
+
+1:20 h - Vaihtoehtoinen ohjaustapa (q,w,e,a,s,d,z,x,c). Pientä refaktorointia. Sekvenssikaavioita lisätty/päivitetty.
