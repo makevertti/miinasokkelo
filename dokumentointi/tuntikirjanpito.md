@@ -69,3 +69,7 @@
 #### 19.2
 
 1:20 h - Vaihtoehtoinen ohjaustapa (q,w,e,a,s,d,z,x,c). Pientä refaktorointia. Sekvenssikaavioita lisätty/päivitetty.
+
+#### 23.2 
+
+1:10 h - Refaktorointia

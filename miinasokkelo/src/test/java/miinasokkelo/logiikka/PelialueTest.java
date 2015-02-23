@@ -27,8 +27,8 @@ public class PelialueTest {
     
     @Test
     public void avatutRuudutPaivittyvat() {
-        pelaaja.liiku("oikea");
-        pelaaja.liiku("alaoikea");
+        pelaaja.liiku(1, 0);
+        pelaaja.liiku(1, 1);
         
         assertEquals(true, pelialue.getOnkoAvattu(0, 0));
         assertEquals(true, pelialue.getOnkoAvattu(1, 0));
@@ -68,11 +68,11 @@ public class PelialueTest {
     
     @Test
     public void maaliinPaaseminenPoistaaPelaajanOhjauksen() {
-        pelaaja.liiku("alaoikea");
-        pelaaja.liiku("alaoikea");
-        pelaaja.liiku("alaoikea");
-        pelaaja.liiku("alaoikea");
-        pelaaja.liiku("ylÃ¶s");
+        pelaaja.liiku(1, 1);
+        pelaaja.liiku(1, 1);
+        pelaaja.liiku(1, 1);
+        pelaaja.liiku(1, 1);
+        pelaaja.liiku(0, -1);
         
         assertEquals(4, pelaaja.getX());
         assertEquals(4, pelaaja.getY());

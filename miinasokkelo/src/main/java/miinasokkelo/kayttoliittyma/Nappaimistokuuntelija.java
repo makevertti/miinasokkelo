@@ -30,59 +30,59 @@ public class Nappaimistokuuntelija implements KeyListener {
     public void keyPressed(KeyEvent nappi) {
         switch(nappi.getKeyCode()) {
             case KeyEvent.VK_NUMPAD1:
-                pelaaja.liiku("alavasen");
+                pelaaja.liiku(-1, 1);
                 break;
             case KeyEvent.VK_Z:
-                pelaaja.liiku("alavasen");
+                pelaaja.liiku(-1, 1);
                 break;
                 
             case KeyEvent.VK_NUMPAD2:
-                pelaaja.liiku("alas");
+                pelaaja.liiku(0, 1);
                 break;
             case KeyEvent.VK_X:
-                pelaaja.liiku("alas");
+                pelaaja.liiku(0, 1);
                 break;
                 
             case KeyEvent.VK_NUMPAD3:
-                pelaaja.liiku("alaoikea");
+                pelaaja.liiku(1, 1);
                 break;
             case KeyEvent.VK_C:
-                pelaaja.liiku("alaoikea");
+                pelaaja.liiku(1, 1);
                 break;
                 
             case KeyEvent.VK_NUMPAD4:
-                pelaaja.liiku("vasen");
+                pelaaja.liiku(-1, 0);
                 break;
             case KeyEvent.VK_A:
-                pelaaja.liiku("vasen");
+                pelaaja.liiku(-1, 0);
                 break;
                 
             case KeyEvent.VK_NUMPAD6:
-                pelaaja.liiku("oikea");
+                pelaaja.liiku(1, 0);
                 break;
             case KeyEvent.VK_D:
-                pelaaja.liiku("oikea");
+                pelaaja.liiku(1, 0);
                 break;
                 
             case KeyEvent.VK_NUMPAD7:
-                pelaaja.liiku("ylävasen");
+                pelaaja.liiku(-1, -1);
                 break;
             case KeyEvent.VK_Q:
-                pelaaja.liiku("ylävasen");
+                pelaaja.liiku(-1, -1);
                 break;
                 
             case KeyEvent.VK_NUMPAD8:
-                pelaaja.liiku("ylös");
+                pelaaja.liiku(0, -1);
                 break;
             case KeyEvent.VK_W:
-                pelaaja.liiku("ylös");
+                pelaaja.liiku(0, -1);
                 break;
                 
             case KeyEvent.VK_NUMPAD9:
-                pelaaja.liiku("yläoikea");
+                pelaaja.liiku(1, -1);
                 break;
             case KeyEvent.VK_E:
-                pelaaja.liiku("yläoikea");
+                pelaaja.liiku(1, -1);
                 break;
                 
             case KeyEvent.VK_ESCAPE:

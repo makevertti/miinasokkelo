@@ -32,21 +32,21 @@ public class PelaajaTest {
     
     @Test
     public void liikkuminenYlosToimii() {
-        pelaaja.liiku("ylös");
+        pelaaja.liiku(0, -1);
         
         assertEquals(4, pelaaja.getY());
     }
     
     @Test
     public void liikkuminenYlosToimiiOltaessaYlaReunassa() {
-        pelaaja3.liiku("ylös");
+        pelaaja3.liiku(0, -1);
         
         assertEquals(0, pelaaja3.getY());
     }
     
     @Test
     public void liikkuminenYlaoikealleToimii() {
-        pelaaja.liiku("yläoikea");
+        pelaaja.liiku(1, -1);
         
         assertEquals(3, pelaaja.getX());
         assertEquals(4, pelaaja.getY());
@@ -54,7 +54,7 @@ public class PelaajaTest {
     
     @Test
     public void liikkuminenYlaoikealleToimiiOltaessaReunassa() {
-        pelaaja3.liiku("yläoikea");
+        pelaaja3.liiku(1, -1);
         
         assertEquals(0, pelaaja3.getX());
         assertEquals(0, pelaaja3.getY());
@@ -62,21 +62,21 @@ public class PelaajaTest {
     
     @Test
     public void liikkuminenOikealleToimii() {
-        pelaaja.liiku("oikea");
+        pelaaja.liiku(1, 0);
         
         assertEquals(3, pelaaja.getX());
     }
     
     @Test
     public void liikkuminenOikealleToimiiOltaessaReunassa() {
-        pelaaja3.liiku("oikea");
+        pelaaja3.liiku(1, 0);
         
         assertEquals(0, pelaaja3.getX());
     }
     
     @Test
     public void liikkuminenAlaoikealleToimii() {
-        pelaaja.liiku("alaoikea");
+        pelaaja.liiku(1, 1);
         
         assertEquals(3, pelaaja.getX());
         assertEquals(6, pelaaja.getY());
@@ -84,7 +84,7 @@ public class PelaajaTest {
     
     @Test
     public void liikkuminenAlaoikealleToimiiOltaessaReunassa() {
-        pelaaja3.liiku("alaoikea");
+        pelaaja3.liiku(1, 1);
         
         assertEquals(0, pelaaja3.getX());
         assertEquals(0, pelaaja3.getY());
@@ -92,21 +92,21 @@ public class PelaajaTest {
     
     @Test
     public void liikkuminenAlasToimii() {
-        pelaaja.liiku("alas");
+        pelaaja.liiku(0, 1);
         
         assertEquals(6, pelaaja.getY());
     }
     
     @Test
     public void liikkuminenAlasToimiiOltaessaReunassa() {
-        pelaaja3.liiku("alas");
+        pelaaja3.liiku(0, 1);
         
         assertEquals(0, pelaaja3.getY());
     }
     
     @Test
     public void liikkuminenAlavasemmalleToimii() {
-        pelaaja.liiku("alavasen");
+        pelaaja.liiku(-1 , 1);
         
         assertEquals(1, pelaaja.getX());
         assertEquals(6, pelaaja.getY());
@@ -114,7 +114,7 @@ public class PelaajaTest {
     
     @Test
     public void liikkuminenAlavasemmalleToimiiOltaessaReunassa() {
-        pelaaja3.liiku("alavasen");
+        pelaaja3.liiku(-1, 1);
         
         assertEquals(0, pelaaja3.getY());
         assertEquals(0, pelaaja3.getX());
@@ -122,21 +122,21 @@ public class PelaajaTest {
     
     @Test
     public void liikkuminenVasemmalleToimii() {
-        pelaaja.liiku("vasen");
+        pelaaja.liiku(-1 ,0);
         
         assertEquals(1, pelaaja.getX());
     }
     
     @Test
     public void liikkuminenVasemmalleToimiiOltaessaReunassa() {
-        pelaaja3.liiku("vasen");
+        pelaaja3.liiku(-1, 0);
         
         assertEquals(0, pelaaja3.getX());
     }
     
     @Test
     public void liikkuminenYlavasemmalleToimii() {
-        pelaaja.liiku("ylävasen");
+        pelaaja.liiku(-1, -1);
         
         assertEquals(1, pelaaja.getX());
         assertEquals(4, pelaaja.getY());
@@ -144,7 +144,7 @@ public class PelaajaTest {
     
     @Test
     public void liikkuminenYlavasemmalleToimiiOltaessaReunassa() {
-        pelaaja3.liiku("ylävasen");
+        pelaaja3.liiku(-1, -1);
         
         assertEquals(0, pelaaja3.getX());
         assertEquals(0, pelaaja3.getY());
@@ -152,9 +152,9 @@ public class PelaajaTest {
     
     @Test
     public void miinaanTormaamisenJalkeenEiVoiLiikkua() {
-        pelaaja2.liiku("oikea");
-        pelaaja2.liiku("oikea");
-        pelaaja2.liiku("alas");
+        pelaaja2.liiku(1, 0);
+        pelaaja2.liiku(1, 0);
+        pelaaja2.liiku(0, 1);
         
         assertEquals(1, pelaaja2.getX());
     }

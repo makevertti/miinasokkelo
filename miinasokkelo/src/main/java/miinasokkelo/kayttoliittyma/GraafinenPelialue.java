@@ -51,12 +51,12 @@ public class GraafinenPelialue extends JPanel {
                 } else {
                     if (pelialue.getRuutu(j, i) == 0) {                     //tyhjä ruutu
                         grafiikkaRuudut[j][i].vaihdaRuudunTyyppi("tyhjä");
-                        grafiikkaRuudut[j][i].lisaaMiinaNumero(pelialue.getMiinatRuudunYmparilla(i, j));
+                        grafiikkaRuudut[j][i].lisaaMiinaNumero(pelialue.getMiinatRuudunYmparilla(j, i));
                     } else if (pelialue.getRuutu(j, i) == 2) {              //miina
                         grafiikkaRuudut[j][i].vaihdaRuudunTyyppi("miina");
                     } else if (pelialue.getRuutu(j, i) == 1) {              //pelaaja
                         grafiikkaRuudut[j][i].vaihdaRuudunTyyppi("pelaaja");
-                        grafiikkaRuudut[j][i].lisaaMiinaNumero(pelialue.getMiinatRuudunYmparilla(i, j));
+                        grafiikkaRuudut[j][i].lisaaMiinaNumero(pelialue.getMiinatRuudunYmparilla(j, i));
                     } else if (pelialue.getRuutu(j, i) == 4) {              //maali
                         grafiikkaRuudut[j][i].vaihdaRuudunTyyppi("maali");
                     }
