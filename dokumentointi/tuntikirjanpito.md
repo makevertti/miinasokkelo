@@ -72,4 +72,4 @@
 
 #### 23.2 
 
-1:10 h - Refaktorointia
+1:20 h - Refaktorointia, muutama testi lisää

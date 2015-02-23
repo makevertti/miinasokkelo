@@ -9,15 +9,19 @@ public class PelialueTest {
     
     Pelaaja pelaaja;
     Pelaaja pelaaja2;
+    Pelaaja pelaaja3;
     Pelialue pelialue;
     Pelialue pelialue2;
+    Pelialue pelialue3;
 
     @Before
     public void setUp() {
         pelaaja = new Pelaaja(0, 0);
         pelaaja2 = new Pelaaja(0, 0);
+        pelaaja3 = new Pelaaja(0, 0);
         pelialue = new Pelialue(5, 0, pelaaja, false);
         pelialue2 = new Pelialue(20, 50, pelaaja2, false);
+        pelialue3 = new Pelialue(2, 2, pelaaja3, true);
     }
     
     @Test
@@ -76,5 +80,30 @@ public class PelialueTest {
         
         assertEquals(4, pelaaja.getX());
         assertEquals(4, pelaaja.getY());
-    } 
+    }
+    
+    @Test
+    public void onkoPelaajaAlueellaToimii() {
+        assertEquals(true, pelialue.onkoPelaajaAlueella(1, 3));
+    }
+    
+    @Test
+    public void onkoPelaajaAlueellaToimii2() {
+        assertEquals(false, pelialue.onkoPelaajaAlueella(9, 3));
+    }
+    
+    @Test
+    public void getMiinatRuudunYmparillaToimii() {
+        assertEquals(0, pelialue.getMiinatRuudunYmparilla(2, 4));
+    }
+    
+    @Test
+    public void getMiinatRuudunYmparillaToimii2() {
+        assertEquals(2, pelialue3.getMiinatRuudunYmparilla(0, 0));
+    }
+    
+    @Test
+    public void getPelaajaToimii() {
+        assertEquals(pelaaja, pelialue.getPelaaja());
+    }
 }
