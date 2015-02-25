@@ -84,12 +84,12 @@ public class PelialueTest {
     
     @Test
     public void onkoPelaajaAlueellaToimii() {
-        assertEquals(true, pelialue.onkoPelaajaAlueella(1, 3));
+        assertEquals(true, pelialue.onPelialueella(1, 3));
     }
     
     @Test
     public void onkoPelaajaAlueellaToimii2() {
-        assertEquals(false, pelialue.onkoPelaajaAlueella(9, 3));
+        assertEquals(false, pelialue.onPelialueella(9, 3));
     }
     
     @Test

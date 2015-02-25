@@ -28,7 +28,7 @@ public class Nappaimistokuuntelija implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent nappi) {
-        switch(nappi.getKeyCode()) {
+        switch (nappi.getKeyCode()) {
             case KeyEvent.VK_NUMPAD1:
                 pelaaja.liiku(-1, 1);
                 break;
@@ -84,9 +84,6 @@ public class Nappaimistokuuntelija implements KeyListener {
             case KeyEvent.VK_E:
                 pelaaja.liiku(1, -1);
                 break;
-                
-            case KeyEvent.VK_ESCAPE:
-                pelaaja.uusiPeli();
         }
     }
 

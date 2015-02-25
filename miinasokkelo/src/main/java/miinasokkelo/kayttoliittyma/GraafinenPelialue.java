@@ -112,7 +112,7 @@ public class GraafinenPelialue extends JPanel {
         ActionListener nappiListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    pelialue.uusiPeli();
+                pelialue.uusiPeli();
             }
         };       
         miinaviesti.add(uusiPeliNappi);

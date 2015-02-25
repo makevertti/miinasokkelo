@@ -16,7 +16,7 @@ public class Miinasokkelo {
     private static String vaikeustaso;
     
     public static void main(String[] args) {
-        vaikeustaso = (String)JOptionPane.showInputDialog(new JFrame(), "Valitse vaikeustaso", "miinasokkelo", JOptionPane.QUESTION_MESSAGE, null, vaikeustasot, vaikeustasot[0]);
+        vaikeustaso = (String) JOptionPane.showInputDialog(new JFrame(), "Valitse vaikeustaso", "miinasokkelo", JOptionPane.QUESTION_MESSAGE, null, vaikeustasot, vaikeustasot[0]);
         if (vaikeustaso == null) {
             System.exit(0);
         } else if (vaikeustaso.equals("Helppo")) {

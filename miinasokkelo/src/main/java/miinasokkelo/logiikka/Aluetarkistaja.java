@@ -35,8 +35,8 @@ public class Aluetarkistaja {
     /**
      * Käytetään ruutujen avaamisen yhteydessä
      * 
-     * @param x
-     * @param y 
+     * @param x     Tarkistettavan ruudun x-koordinaatti
+     * @param y     Tarkistettavan ruudun y-koordinaatti
      */
     public void tarkistaEttaRuutuOnPelialueella(int x, int y) {
         if (onPelialueella(x, y + 1)) {

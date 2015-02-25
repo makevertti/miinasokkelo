@@ -39,7 +39,6 @@ public class Pelialue {
 
         graafinenPelialue = new GraafinenPelialue(this);
         paivitaPelaajanSijainti(pelaaja.getX(), pelaaja.getY(), pelaaja.getX(), pelaaja.getY());
-        paivitaAvatutRuudut();
         graafinenPelialue.luoPeliIkkuna();
     }
 
@@ -48,8 +47,8 @@ public class Pelialue {
      *
      * @param edellinenX x-koordinaatti, mistä pelaaja tuli
      * @param edellinenY y-koordinaatti, mistä pelaaja tuli
-     * @param x x-koordinaatti, mihin pelaaja siirtyi
-     * @param y y-koordinaatti, mihin pelaaja siirtyi
+     * @param x          x-koordinaatti, mihin pelaaja siirtyi
+     * @param y          y-koordinaatti, mihin pelaaja siirtyi
      */
     public void paivitaPelaajanSijainti(int edellinenX, int edellinenY, int x, int y) {
         ruudukko[edellinenY][edellinenX] = 0;
@@ -100,10 +99,20 @@ public class Pelialue {
         avaaRuudutJoidenVieressaEiOleMiinoja(x - 1, y + 1, kayty);
     }
 
-    public boolean onkoPelaajaAlueella(int x, int y) {
+    /**
+     * Tarkistaa onko ruutu pelialueen sisällä
+     * 
+     * @param x     Ruudun x-koordinaatti
+     * @param y     Ruudun y-koordinaatti
+     * @return      True: on alueella, false: ei ole alueella
+     */
+    public boolean onPelialueella(int x, int y) {
         return aluetarkistaja.onPelialueella(x, y);
     }
 
+    /**
+     * Aloittaa uuden pelin
+     */
     public void uusiPeli() {
         pelaaja.uusiPeli();
     }

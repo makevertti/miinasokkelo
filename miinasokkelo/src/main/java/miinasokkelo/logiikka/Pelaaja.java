@@ -41,16 +41,12 @@ public class Pelaaja {
         if (osunutMiinaan) {
             return;
         }
-        if (pelialue.onkoPelaajaAlueella(getX() + xMuutos, getY() + yMuutos)) {
+        if (pelialue.onPelialueella(getX() + xMuutos, getY() + yMuutos)) {
             paivitaEdellinenSijainti();
             sijaintiX += xMuutos;
             sijaintiY += yMuutos;
-            paivitaPelaajanSijainti();
+            pelialue.paivitaPelaajanSijainti(edellinenX, edellinenY, sijaintiX, sijaintiY);
         }
-    }
-
-    private void paivitaPelaajanSijainti() {
-        pelialue.paivitaPelaajanSijainti(edellinenX, edellinenY, sijaintiX, sijaintiY);
     }
 
     private void paivitaEdellinenSijainti() {
@@ -58,6 +54,9 @@ public class Pelaaja {
         edellinenX = sijaintiX;
     }
 
+    /**
+     * Poistaa näppäimistöohjauksen käytöstä
+     */
     public void poistaOhjaus() {
         osunutMiinaan = true;
     }

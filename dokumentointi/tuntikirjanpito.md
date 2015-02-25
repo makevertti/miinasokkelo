@@ -73,3 +73,7 @@
 #### 23.2 
 
 1:20 h - Refaktorointia, muutama testi lisää
+
+#### 25.2
+
+2:20 h - pientä refaktorointia, päivitetty/lisätty: luokka - ja sekvenssikaaviot, javadoc, pit, checkstyle, rakennekuvaus, käyttöohjeet, jar
